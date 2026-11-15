@@ -1,5 +1,5 @@
 # Preserve imported snapshot bytes and both licence notices on every platform.
 * -text whitespace=cr-at-eol
 # Retain the upstream reference files' final blank line verbatim.
-pr-template/references/older-prs.md whitespace=cr-at-eol,-blank-at-eof
-repo-docs/references/sources.md whitespace=cr-at-eol,-blank-at-eof
+**/pr-template/references/older-prs.md whitespace=cr-at-eol,-blank-at-eof
+**/repo-docs/references/sources.md whitespace=cr-at-eol,-blank-at-eof

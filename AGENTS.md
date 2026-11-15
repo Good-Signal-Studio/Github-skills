@@ -34,3 +34,9 @@ republish the removed upstream worked example while its provenance is unresolved
 Change the installer and its tests together. Never bypass a collision or use a
 force flag to overwrite an existing project's work. Read `docs/enrolment.md`
 before changing ownership, instruction blocks or transaction recovery.
+
+<!-- good-signal-studio:defaults:start -->
+Read `.github/good-signal/DEFAULTS.md` for the shared organisation defaults.
+This repository's branch, test, dependency, security and approval rules take precedence.
+Skills are available in `.agents/skills/` for Codex and `.claude/skills/` for Claude.
+<!-- good-signal-studio:defaults:end -->
