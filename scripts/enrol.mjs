@@ -145,6 +145,25 @@ function instructionContent(name) {
     : '@AGENTS.md')
 }
 
+function importsAgents(content) {
+  let fence = null
+  let imported = false
+  for (const line of (content?.toString('utf8') ?? '').replace(/^\ufeff/, '').split(/\r?\n/)) {
+    const marker = /^ {0,3}(`{3,}|~{3,})(.*)$/.exec(line)
+    if (fence) {
+      if (marker && marker[1][0] === fence[0] && marker[1].length >= fence.length && /^[ \t]*$/.test(marker[2])) fence = null
+      continue
+    }
+    if (marker && (marker[1][0] === '~' || !marker[2].includes('`'))) {
+      fence = marker[1]
+      continue
+    }
+    if (/^\s*@(?:\.\/)?AGENTS\.md\s*$/.test(line)) imported = true
+  }
+  if (fence) throw new Error('CLAUDE.md has an unclosed Markdown fence. Review the existing document before enrolment')
+  return imported
+}
+
 function present(root, directory, re) {
   const folder = resolve(root, directory)
   if (!existsSync(folder)) return false
@@ -208,7 +227,7 @@ export function plan({ repoPath, bundleRoot, revision, communityTarget = false, 
       for (const [path, data] of source.files) if (path.startsWith('community/.github/ISSUE_TEMPLATE/')) desired.set(path.slice('community/'.length), data)
     } else result.skips.push('Existing ISSUE_TEMPLATE directory disables the complete organisation issue fallback. Kept all local issue files')
     const ownPr = previous && Object.hasOwn(previous.files, '.github/PULL_REQUEST_TEMPLATE.md')
-    const prPresent = ['', '.github', 'docs'].some(dir => present(root, dir, /^pull_request_template(?:\.md)?$/i))
+    const prPresent = ['', '.github', 'docs'].some(dir => present(root, dir, /^pull_request_template(?:\.(?:md|txt))?$/i))
     if (ownPr || !prPresent) desired.set('.github/PULL_REQUEST_TEMPLATE.md', source.files.get('community/.github/PULL_REQUEST_TEMPLATE.md'))
     else result.skips.push('Existing project PR template takes precedence')
     if (previous) for (const path of Object.keys(previous.files)) if (!desired.has(path)) result.conflicts.push(`Previously owned path was removed from the bundle. Reconcile it manually: ${path}`)
@@ -236,11 +255,12 @@ export function plan({ repoPath, bundleRoot, revision, communityTarget = false, 
     }
     if (!communityTarget) for (const path of ['AGENTS.md', 'CLAUDE.md']) {
       const current = read(safeTarget(root, path))
+      const existingImport = path === 'CLAUDE.md' && importsAgents(current)
       const range = blockRange(current)
       const priorHash = previous?.blocks[path]
       if (priorHash && (!range || sha(range.content) !== priorHash)) result.conflicts.push(`Managed instruction block was edited or removed: ${path}`)
       if (range && !priorHash) result.conflicts.push(`Unowned instruction block already exists: ${path}`)
-      if (path === 'CLAUDE.md' && !range && !priorHash && current?.toString('utf8').split(/\r?\n/).some(line => /^\s*@(?:\.\/)?AGENTS\.md\s*$/.test(line))) {
+      if (!range && !priorHash && existingImport) {
         result.skips.push('CLAUDE.md already imports @AGENTS.md')
         continue
       }

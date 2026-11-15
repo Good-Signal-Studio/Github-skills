@@ -102,6 +102,57 @@ test('existing instruction bytes survive append and a second apply is byte-idemp
   assert.deepEqual(snapshot(options.repoPath), before)
 })
 
+test('Claude import decisions distinguish active imports from fenced examples', t => {
+  const source = fixture(t)
+  const cases = [
+    ['backtick-example', '# Project\nThis is a documented example, not an import.\n```md\n@AGENTS.md\n```\n', true],
+    ['indented-tilde-example', '\ufeff   ~~~md\r\n@./AGENTS.md\r\n   ~~~\r\n', true],
+    ['long-backtick-example', '````md\n```\n~~~~\n```` code\n@AGENTS.md\n  `````\t\n', true],
+    ['long-tilde-example', '~~~~md\n~~~\n````\n~~~~ code\n@AGENTS.md\n ~~~~~  \n', true],
+    ['active-after-example', '```md\n@AGENTS.md\n```\n@./AGENTS.md\n', false],
+    ['active-before-example', '@AGENTS.md\r\n~~~md\r\n@AGENTS.md\r\n~~~\r\n', false],
+  ]
+  for (const [name, text, append] of cases) {
+    const repoPath = join(dirname(source.repoPath), name)
+    mkdirSync(repoPath)
+    git(repoPath, 'init', '-q')
+    const options = { ...source, repoPath }
+    const original = Buffer.from(text)
+    put(repoPath, 'CLAUDE.md', original)
+    const proposal = plan(options)
+    assert.deepEqual(proposal.conflicts, [], name)
+    assert.equal(proposal.changes.some(change => change.path === 'CLAUDE.md'), append, name)
+    assert.deepEqual(readFileSync(join(repoPath, 'CLAUDE.md')), original, name)
+    if (name !== 'backtick-example') continue
+    assert.equal(apply(options).applied, true, name)
+    const expected = append ? Buffer.concat([original, Buffer.from('\n<!-- good-signal-studio:defaults:start -->\n@AGENTS.md\n<!-- good-signal-studio:defaults:end -->\n')]) : original
+    assert.deepEqual(readFileSync(join(repoPath, 'CLAUDE.md')), expected, name)
+    const before = snapshot(repoPath)
+    assert.equal(check(options).current, true, name)
+    assert.equal(apply(options).changes.length, 0, name)
+    assert.deepEqual(snapshot(repoPath), before, name)
+  }
+})
+
+test('unclosed Claude fences require review before any enrolment writes', t => {
+  const source = fixture(t)
+  for (const [name, text] of [
+    ['backtick', '````md\n@AGENTS.md\n```\n'],
+    ['tilde', '   ~~~md\n@AGENTS.md'],
+  ]) {
+    const repoPath = join(dirname(source.repoPath), name)
+    mkdirSync(repoPath)
+    git(repoPath, 'init', '-q')
+    const options = { ...source, repoPath }
+    put(repoPath, 'CLAUDE.md', text)
+    const before = snapshot(repoPath)
+    const result = apply(options)
+    assert.equal(result.applied, false, name)
+    assert.match(result.conflicts.join('\n'), /CLAUDE\.md.*unclosed.*fence.*review/i)
+    assert.deepEqual(snapshot(repoPath), before, name)
+  }
+})
+
 test('managed instruction updates allow changes to the project text outside the block', t => {
   const options = fixture(t)
   put(options.repoPath, 'AGENTS.md', '# Project\nOriginal project rule.\n')
@@ -169,7 +220,7 @@ test('any local issue configuration preserves the whole local issue-template set
   assert.ok(plan(options).skips.some(line => line.includes('complete organisation issue fallback')))
 })
 
-for (const path of ['PULL_REQUEST_TEMPLATE.md', 'docs/PULL_REQUEST_TEMPLATE.md', '.github/PULL_REQUEST_TEMPLATE.md', '.github/PULL_REQUEST_TEMPLATE/custom.md', 'docs/PULL_REQUEST_TEMPLATE/custom.md']) {
+for (const path of ['PULL_REQUEST_TEMPLATE.md', 'docs/PULL_REQUEST_TEMPLATE.md', '.github/PULL_REQUEST_TEMPLATE.md', '.github/PULL_REQUEST_TEMPLATE/custom.md', 'docs/PULL_REQUEST_TEMPLATE/custom.md', 'PULL_REQUEST_TEMPLATE', 'PULL_REQUEST_TEMPLATE.txt', 'docs/pull_request_template.TXT', '.github/PuLl_ReQuEsT_TeMpLaTe.TxT']) {
   test(`existing ${path} suppresses the default PR template`, t => {
     const options = fixture(t)
     put(options.repoPath, path, 'project template\n')

@@ -42,9 +42,12 @@ paths are disjoint. Use one writer and stop other edits during an apply.
 
 The installer appends a bounded reference to root `AGENTS.md`, preserving every
 existing byte. It appends a bounded `@AGENTS.md` import to `CLAUDE.md` only when an
-import is absent. Existing instructions outside the managed block can change
-freely. The manifest compares the block itself on updates. An edited or removed
-managed block requires manual reconciliation. It is never replaced silently.
+active import is absent. Examples inside backtick or tilde code fences do not
+count as active imports. An unclosed fence in an existing `CLAUDE.md` stops
+enrolment for manual review before any writes. Existing instructions outside the
+managed block can change freely. The manifest compares the block itself on
+updates. An edited or removed managed block requires manual reconciliation. It
+is never replaced silently.
 
 A root `AGENTS.override.md` is an explicit conflict because Codex can select it
 instead of `AGENTS.md`. Review that override and add the shared reference using
@@ -55,9 +58,10 @@ runtime's discovered skill list before relying on a particular deployment.
 
 All existing issue-template directories suppress the complete default issue set,
 including a directory that contains only `config.yml`. Root, `.github/` and
-`docs/` PR templates, including a `PULL_REQUEST_TEMPLATE` directory, suppress the
-default PR template. Enrolment installs missing issue and PR templates only. It
-does not install the example CI, security policy, CODEOWNERS or full AGENTS template.
+`docs/` PR templates, including `.md`, `.txt`, extensionless files and a
+`PULL_REQUEST_TEMPLATE` directory, suppress the default PR template. Enrolment
+installs missing issue and PR templates only. It does not install the example CI,
+security policy, CODEOWNERS or full AGENTS template.
 
 ## Updates and rollback
 
