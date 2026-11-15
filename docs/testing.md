@@ -10,6 +10,9 @@ Git, Node and Python must be available. CI uses Node 24 and Python 3.13. The tes
 use standard libraries and need no package installation. The runner reports each
 phase and total elapsed time. Any failed phase makes the command exit nonzero.
 Independent phases still run after a test failure.
+Successful Python progress goes to stdout, including unittest's normal stderr
+output. A nonzero Python exit retains its stderr diagnostics. This keeps a
+successful command compatible with PowerShell's strict error preference.
 
 ## What the command checks
 

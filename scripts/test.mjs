@@ -19,11 +19,15 @@ files.sort()
 const results = []
 for (const phase of [
   { name: 'Node tests', command: process.execPath, args: ['--test', ...files], cwd: root },
-  { name: 'Python watcher tests', command: 'python', args: ['-m', 'unittest', '-v'], cwd: join(root, 'babysit-pr', 'scripts') },
+  { name: 'Python watcher tests', command: 'python', args: ['-m', 'unittest', '-v'], cwd: join(root, 'babysit-pr', 'scripts'), captureOutput: true },
 ]) {
   const phaseStarted = performance.now()
   console.log(`\n=== ${phase.name} ===`)
-  const result = spawnSync(phase.command, phase.args, { cwd: phase.cwd, stdio: 'inherit' })
+  const result = spawnSync(phase.command, phase.args, { cwd: phase.cwd, stdio: phase.captureOutput ? 'pipe' : 'inherit', encoding: 'utf8' })
+  if (phase.captureOutput) {
+    if (result.stdout) process.stdout.write(result.stdout)
+    if (result.stderr) (result.status === 0 ? process.stdout : process.stderr).write(result.stderr)
+  }
   if (result.error) console.error(result.error.message)
   if (result.signal) console.error(`${phase.name} terminated by ${result.signal}`)
   results.push({ name: phase.name, passed: !result.error && result.status === 0 })
