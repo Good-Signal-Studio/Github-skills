@@ -27,10 +27,6 @@ jobs:
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: "3.13"
-      - name: Node tests
+      - name: Tests and committed content sync
         shell: bash
         run: node scripts/test.mjs
-      - name: pr-wait tests
-        shell: bash
-        working-directory: babysit-pr/scripts
-        run: python -m unittest -v

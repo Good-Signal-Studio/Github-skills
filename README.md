@@ -31,6 +31,10 @@ and conflicts. Apply that reviewed revision with `apply` in place of `plan`, the
 use `check`. A real full commit is required and tracked bundle files must be clean
 for apply. Commit the consumer's changes after review. See
 [enrolment and recovery](docs/enrolment.md) for Windows paths, updates and rollback.
+Strict `check` requires a matching revision pin. Read-only `check-content` can
+confirm identical managed content across commits that change only root tooling
+or documentation. It compares all manifest metadata except `bundle.revision` and
+keeps the recorded pin intact.
 
 ## Examples
 
@@ -55,8 +59,9 @@ does not install or enable it, and it changes no global settings by itself.
 ## Documentation
 
 [The architecture](docs/architecture.md) describes inventory, ownership and safe
-updates. [Enrolment](docs/enrolment.md) covers plan, apply, check, refusal, recovery
-and community export. Facts below were checked against this tree on 2026-11-15.
+updates. [Enrolment](docs/enrolment.md) covers plan, apply, checks, refusal, recovery
+and community export. [Testing](docs/testing.md) explains the single local and CI
+command and its coverage. Facts below were checked against this tree on 2026-11-15.
 
 | Folder | Contents |
 | --- | --- |
@@ -97,6 +102,16 @@ Current and new projects need explicit agent enrolment. Managed enterprise
 provisioning needs separate Codex or Claude administrator access.
 
 ## Contributing
+
+Run the complete checks from a clean committed head with Git, Node and Python:
+
+```sh
+node scripts/test.mjs
+```
+
+The runner tests the canonical Node files, tests the Python watcher and checks
+committed content sync once each. It reports each result and total elapsed time.
+Generated copies remain tracked and checked, but their tests are not rerun.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, tests and the review process.
 Maintain this README when the inventory, commands or deployment behaviour changes.

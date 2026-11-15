@@ -4,6 +4,7 @@ import { createHash } from 'node:crypto'
 import { chmodSync, existsSync, lstatSync, mkdirSync, readFileSync, readdirSync, realpathSync, rmdirSync, unlinkSync, writeFileSync } from 'node:fs'
 import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { isDeepStrictEqual } from 'node:util'
 
 export const BUNDLE_REPOSITORY = 'https://github.com/Good-Signal-Studio/Github-skills'
 const MANIFEST = '.github/good-signal/manifest.json'
@@ -205,6 +206,7 @@ export function plan({ repoPath, bundleRoot, revision, communityTarget = false, 
     if (!communityTarget && result.instructions['AGENTS.override.md'] !== null) throw new Error('Root AGENTS.override.md bypasses AGENTS.md in Codex. Add a reviewed project reference or remove that override before enrolment. No files were changed')
     const manifestPath = communityTarget ? COMMUNITY_MANIFEST : MANIFEST
     const previous = loadManifest(root, manifestPath, result.mode)
+    Object.defineProperty(result, '_recordedRevision', { value: previous?.bundle?.revision ?? null })
     const desired = new Map()
     const modes = {}
     if (!communityTarget) {
@@ -365,6 +367,30 @@ export function check(options) {
   return { ...proposal, current: !proposal.conflicts.length && !proposal.changes.length }
 }
 
+export function checkContent(options) {
+  const proposal = plan({ ...options, requireClean: true })
+  const recordedRevision = proposal._recordedRevision ?? null
+  const checkedRevision = proposal.revision
+  const validRevision = typeof recordedRevision === 'string' && /^[0-9a-f]{40}$/i.test(recordedRevision)
+  const revisionCurrent = validRevision && recordedRevision.toLowerCase() === checkedRevision
+  let contentCurrent = false
+  if (!proposal.conflicts.length && validRevision) {
+    const manifestPath = options.communityTarget ? COMMUNITY_MANIFEST : MANIFEST
+    const operations = proposal._operations
+    const manifestMode = lstatSync(safeTarget(proposal.repoPath, manifestPath)).mode & 0o777
+    if (process.platform !== 'win32' && manifestMode !== 0o644) {
+      proposal.conflicts.push(`Managed manifest permissions were edited locally: ${manifestPath}`)
+    } else if (!operations.length) contentCurrent = true
+    else if (operations.length === 1 && operations[0].path === manifestPath && operations[0].before !== null) {
+      const previous = JSON.parse(operations[0].before.toString('utf8'))
+      const next = JSON.parse(operations[0].after.toString('utf8'))
+      previous.bundle.revision = next.bundle.revision
+      contentCurrent = isDeepStrictEqual(previous, next)
+    }
+  }
+  return { ...proposal, contentCurrent, revisionCurrent, recordedRevision, checkedRevision }
+}
+
 function main(args) {
   const options = {}
   let command = args.shift()
@@ -376,15 +402,16 @@ function main(args) {
     else if (['--repoPath', '--bundleRoot', '--revision'].includes(key) && args[i + 1] && !args[i + 1].startsWith('--')) options[key.slice(2)] = args[++i]
     else throw new Error(`Unknown or incomplete option: ${key}`)
   }
-  if (!options.repoPath || (!options.bundleRoot && command !== 'recover')) throw new Error('Usage: node scripts/enrol.mjs plan|apply|check --repoPath <checkout> --bundleRoot <bundle checkout> --revision <40-char SHA> [--community-target]. Recovery: recover --repoPath <checkout>')
+  if (!options.repoPath || (!options.bundleRoot && command !== 'recover')) throw new Error('Usage: node scripts/enrol.mjs plan|apply|check|check-content --repoPath <checkout> --bundleRoot <bundle checkout> --revision <40-char SHA> [--community-target]. Recovery: recover --repoPath <checkout>')
   let result
   if (command === 'plan') result = plan(options)
   else if (command === 'apply') result = apply(options)
   else if (command === 'check') result = check(options)
+  else if (command === 'check-content') result = checkContent(options)
   else if (command === 'recover') result = recover(options)
   else throw new Error(`Unknown command: ${command}`)
   console.log(JSON.stringify(result, null, 2))
-  if (result.conflicts?.length || result.applied === false || result.current === false) process.exitCode = 1
+  if (result.conflicts?.length || result.applied === false || result.current === false || result.contentCurrent === false) process.exitCode = 1
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

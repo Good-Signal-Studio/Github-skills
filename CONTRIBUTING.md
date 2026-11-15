@@ -21,9 +21,10 @@ an exploit, secret or private project file. See [SECURITY.md](SECURITY.md).
 
 ## Setting up
 
-Use Git and Node 22.18 or newer, or Node 24.2 or newer. CI runs Node 24 and Python
-3.13. The imported scripts use standard libraries. No package installation or
-build is required. `gh` is needed only for the skills' GitHub operations.
+Use Git, Python 3.13 or newer, and Node 22.18 or newer, or Node 24.2 or newer.
+CI runs Node 24 and Python 3.13. The scripts use standard libraries. No package
+installation or build is required. `gh` is needed only for the skills' GitHub
+operations.
 
 ```sh
 git clone https://github.com/Good-Signal-Studio/Github-skills.git
@@ -31,8 +32,10 @@ cd Github-skills
 node scripts/test.mjs
 ```
 
-The test runner passes explicit root test-file paths, including enrolment tests.
-It does not recurse into installed `.agents` or `.claude` snapshots.
+The runner tests canonical Node files and the Python watcher once each, then
+checks the installed content against HEAD. Commit changes before the full run.
+It passes sorted explicit test paths and excludes installed `.agents` and
+`.claude` copies. Those generated copies remain tracked and checked for drift.
 
 ## Making a change
 
@@ -47,11 +50,16 @@ bypass. Keep source changes visible against [UPSTREAM.md](UPSTREAM.md) and the
 
 ```sh
 node scripts/test.mjs
-cd babysit-pr/scripts
-python -m unittest -v
 ```
 
-The [CI workflow](.github/workflows/ci.yml) runs those checks on Linux and Windows.
+This is the complete local and [CI](.github/workflows/ci.yml) command. The runner
+reports all three phases and total elapsed time, with a nonzero exit if any phase
+fails. [Testing](docs/testing.md) covers focused runs and content sync. Strict
+enrolment `check` still requires the recorded revision to match. `check-content`
+allows only that revision field to differ when the complete managed content and
+all other manifest metadata match. Neither check rewrites the recorded pin.
+
+CI declares Linux and Windows jobs.
 Billing currently prevents hosted Actions runs as reported by the owner on
 2026-11-15. Record local results and actual versions. Do not call hosted CI green
 without a successful run. Runtime discovery, public GitHub fallback and independent

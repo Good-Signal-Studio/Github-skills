@@ -15,13 +15,31 @@ revision. Replace them with your checkout paths and the output of `git rev-parse
 node scripts/enrol.mjs plan --repoPath /work/project --bundleRoot /work/Github-skills --revision <full-bundle-SHA>
 node scripts/enrol.mjs apply --repoPath /work/project --bundleRoot /work/Github-skills --revision <full-bundle-SHA>
 node scripts/enrol.mjs check --repoPath /work/project --bundleRoot /work/Github-skills --revision <full-bundle-SHA>
+node scripts/enrol.mjs check-content --repoPath /work/project --bundleRoot /work/Github-skills --revision <full-bundle-SHA>
 ```
 
-`plan` and `check` do not write files. Their JSON includes the current root
-instruction files, proposed paths, skipped templates and conflicts. `check` exits
+`plan`, `check` and `check-content` do not write files. Their JSON includes current
+root instructions, proposed paths, skipped templates and conflicts. `check` exits
 nonzero when a conflict or any pending change exists. `apply` requires a clean
 tracked bundle checkout whose HEAD equals the requested full commit. Each copied
 file must match the pinned Git blob. Untracked files are never copied.
+
+`check` is strict. A different recorded bundle revision is a pending manifest
+update even when all payload bytes match. Use it to check adoption of a specific
+pin. `check-content` checks content across revisions without advancing that pin.
+It requires clean tracked source at the requested full commit and runs the same
+complete plan. It accepts no pending operations, or one manifest update whose
+parsed JSON differs only in `bundle.revision`. The recorded revision must also
+be a full 40-character SHA. No other manifest field is ignored.
+
+The content result reports `contentCurrent`, `revisionCurrent`, `recordedRevision`
+and `checkedRevision` separately. A content pass can accompany a revision mismatch.
+It does not mean the commits have identical installer or test code. Conflicts,
+changed files, licences, permissions, path inventories, metadata, managed
+instruction blocks and interrupted transactions still fail. `check-content`
+exits nonzero when content is not current and never rewrites the manifest.
+The [full test command](testing.md) uses this check on the repository's own
+committed snapshots. Use strict `check` for a consumer's exact adopted revision.
 
 The installer discovers skills from tracked root `SKILL.md` files. It copies the
 complete sibling skill folders, including references, scripts, tests and fixtures,

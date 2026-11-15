@@ -3,3 +3,6 @@
 # Retain the upstream reference files' final blank line verbatim.
 **/pr-template/references/older-prs.md whitespace=cr-at-eol,-blank-at-eof
 **/repo-docs/references/sources.md whitespace=cr-at-eol,-blank-at-eof
+# Generated enrolment snapshots. Canonical skill folders stay visible in review.
+.agents/skills/** linguist-generated=true
+.claude/skills/** linguist-generated=true

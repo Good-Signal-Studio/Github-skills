@@ -1,11 +1,11 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { execFileSync } from 'node:child_process'
-import { chmodSync, existsSync, lstatSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'
+import { execFileSync, spawnSync } from 'node:child_process'
+import { chmodSync, cpSync, existsSync, lstatSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 import { pathToFileURL } from 'node:url'
-import { apply, check, inventory, plan, recover } from './enrol.mjs'
+import { apply, check, checkContent, inventory, plan, recover } from './enrol.mjs'
 
 function git(root, ...args) {
   return execFileSync('git', ['-C', root, ...args], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim()
@@ -334,4 +334,135 @@ test('community export writes defaults and licences without agent payload or ins
   assert.ok(existsSync(join(options.repoPath, '.github/ISSUE_TEMPLATE/bug.yml')))
   assert.ok(existsSync(join(options.repoPath, '.github/good-signal/LICENSE.upstream')))
   assert.equal(check(options).current, true)
+})
+
+test('content check accepts only a revision advancement and leaves the recorded pin untouched', t => {
+  for (const communityTarget of [false, true]) {
+    const options = { ...fixture(t), communityTarget }
+    assert.equal(checkContent(options).contentCurrent, false)
+    assert.equal(checkContent(options).recordedRevision, null)
+    assert.equal(apply(options).applied, true)
+    const recordedRevision = options.revision
+    assert.equal(checkContent(options).contentCurrent, true)
+    assert.equal(checkContent(options).revisionCurrent, true)
+    put(options.bundleRoot, 'README.md', '# Root tooling changed, payload did not\n')
+    options.revision = commit(options.bundleRoot)
+    const before = snapshot(options.repoPath)
+    assert.equal(check(options).current, false)
+    const result = checkContent(options)
+    assert.deepEqual(result.conflicts, [])
+    assert.equal(result.contentCurrent, true)
+    assert.equal(result.revisionCurrent, false)
+    assert.equal(result.recordedRevision, recordedRevision)
+    assert.equal(result.checkedRevision, options.revision)
+    assert.deepEqual(snapshot(options.repoPath), before)
+    const args = ['--repoPath', options.repoPath, '--bundleRoot', options.bundleRoot, '--revision', options.revision]
+    if (communityTarget) args.push('--community-target')
+    const cli = spawnSync(process.execPath, [join(import.meta.dirname, 'enrol.mjs'), 'check-content', ...args], { encoding: 'utf8' })
+    assert.equal(cli.status, 0, cli.stderr)
+    assert.equal(JSON.parse(cli.stdout).contentCurrent, true)
+    assert.equal(spawnSync(process.execPath, [join(import.meta.dirname, 'enrol.mjs'), 'check', ...args]).status, 1)
+    assert.deepEqual(snapshot(options.repoPath), before)
+  }
+})
+
+test('content check refuses consumer drift and metadata corruption through the full plan', t => {
+  const source = fixture(t)
+  assert.equal(apply(source).applied, true)
+  put(source.bundleRoot, 'README.md', '# A later commit with the same payload\n')
+  source.revision = commit(source.bundleRoot)
+  const sourceBefore = snapshot(source.bundleRoot)
+  const manifest = '.github/good-signal/manifest.json'
+  const payload = '.agents/skills/pr-template/scripts/value.mjs'
+  const editManifest = (root, edit) => {
+    const value = JSON.parse(readFileSync(join(root, manifest), 'utf8'))
+    edit(value)
+    put(root, manifest, JSON.stringify(value, null, 2) + '\n')
+  }
+  const cases = [
+    ['installed bytes', root => put(root, payload, 'export default 99\n')],
+    ['missing payload', root => rmSync(join(root, payload))],
+    ['extra payload', root => put(root, '.claude/skills/pr-template/local.txt', 'local\n')],
+    ['licence', root => put(root, '.github/good-signal/LICENSE', 'different licence\n')],
+    ['instruction block', root => put(root, 'AGENTS.md', readFileSync(join(root, 'AGENTS.md'), 'utf8').replace('Read `', 'Ignore `'))],
+    ['override', root => put(root, 'AGENTS.override.md', '# Override\n')],
+    ['missing manifest', root => rmSync(join(root, manifest))],
+    ['malformed manifest', root => put(root, manifest, '{broken')],
+    ['missing revision', root => editManifest(root, value => { delete value.bundle.revision })],
+    ['short revision', root => editManifest(root, value => { value.bundle.revision = 'abc123' })],
+    ['non-string revision', root => editManifest(root, value => { value.bundle.revision = 42 })],
+    ['repository pointer', root => editManifest(root, value => { value.bundle.repository = 'https://example.invalid/wrong' })],
+    ['upstream pointer', root => editManifest(root, value => { value.upstream.manifest = '../outside.json' })],
+    ['source digest', root => editManifest(root, value => { value.bundle.sourceFilesSha256 = '0'.repeat(64) })],
+    ['source file hash', root => editManifest(root, value => { value.bundle.sourceFiles['pr-template/SKILL.md'] = '0'.repeat(64) })],
+    ['missing source path', root => editManifest(root, value => { delete value.bundle.sourceFiles['pr-template/SKILL.md'] })],
+    ['extra source path', root => editManifest(root, value => { value.bundle.sourceFiles['pr-template/extra.md'] = '0'.repeat(64) })],
+    ['source mode', root => editManifest(root, value => { value.bundle.sourceFileModes['pr-template/SKILL.md'] = '100755' })],
+    ['installed hash', root => editManifest(root, value => { value.files[payload] = '0'.repeat(64) })],
+    ['installed mode metadata', root => editManifest(root, value => { value.modes[payload] = 0o755 })],
+    ['extra metadata', root => editManifest(root, value => { value.unreviewed = true })],
+    ['unsafe owned path', root => editManifest(root, value => { value.files['../outside'] = '0'.repeat(64) })],
+    ['interrupted transaction', root => put(root, '.github/good-signal/transaction.json', '{}\n')],
+  ]
+  for (const [name, mutate] of cases) {
+    const repoPath = join(dirname(source.repoPath), name.replaceAll(' ', '-'))
+    cpSync(source.repoPath, repoPath, { recursive: true })
+    mutate(repoPath)
+    const before = snapshot(repoPath)
+    const result = checkContent({ ...source, repoPath })
+    assert.equal(result.contentCurrent, false, name)
+    assert.deepEqual(snapshot(repoPath), before, name)
+  }
+  assert.deepEqual(snapshot(source.bundleRoot), sourceBefore, 'shared source remains immutable')
+  const cli = spawnSync(process.execPath, [join(import.meta.dirname, 'enrol.mjs'), 'check-content', '--repoPath', join(dirname(source.repoPath), 'installed-bytes'), '--bundleRoot', source.bundleRoot, '--revision', source.revision], { encoding: 'utf8' })
+  assert.equal(cli.status, 1, cli.stderr)
+  assert.equal(JSON.parse(cli.stdout).contentCurrent, false)
+})
+
+test('content check rejects changed source payloads and dirty tracked root files', t => {
+  const cases = [
+    ['committed payload', 'pr-template/scripts/value.mjs', 'export default 43\n', true],
+    ['committed licence', 'LICENSE', 'MIT changed\n', true],
+    ['dirty payload', 'pr-template/scripts/value.mjs', 'export default 44\n', false],
+    ['dirty root tooling', 'UPGRADE.md', '# Tracked root instructions\n', false],
+  ]
+  for (const [name, path, content, committed] of cases) {
+    const options = fixture(t)
+    if (path === 'UPGRADE.md') {
+      put(options.bundleRoot, path, '# Original\n')
+      options.revision = commit(options.bundleRoot)
+    }
+    assert.equal(apply(options).applied, true)
+    put(options.bundleRoot, path, content)
+    if (committed) options.revision = commit(options.bundleRoot)
+    const before = snapshot(options.repoPath)
+    assert.equal(checkContent(options).contentCurrent, false, name)
+    assert.deepEqual(snapshot(options.repoPath), before, name)
+  }
+})
+
+test('content check refuses links without following them or writing', t => {
+  const options = fixture(t)
+  assert.equal(apply(options).applied, true)
+  const outside = join(dirname(options.repoPath), 'outside-content')
+  mkdirSync(outside)
+  rmSync(join(options.repoPath, '.agents'), { recursive: true })
+  symlinkSync(outside, join(options.repoPath, '.agents'), 'dir')
+  const before = snapshot(options.repoPath)
+  assert.equal(checkContent(options).contentCurrent, false)
+  assert.deepEqual(snapshot(options.repoPath), before)
+  assert.deepEqual(readdirSync(outside), [])
+})
+
+test('content check rejects installed and manifest permission drift on POSIX', { skip: process.platform === 'win32' }, t => {
+  const options = fixture(t)
+  assert.equal(apply(options).applied, true)
+  for (const path of ['.agents/skills/pr-template/scripts/value.mjs', '.github/good-signal/manifest.json']) {
+    chmodSync(join(options.repoPath, path), 0o600)
+    const before = snapshot(options.repoPath)
+    assert.equal(checkContent(options).contentCurrent, false, path)
+    assert.deepEqual(snapshot(options.repoPath), before, path)
+    assert.equal(lstatSync(join(options.repoPath, path)).mode & 0o777, 0o600)
+    chmodSync(join(options.repoPath, path), 0o644)
+  }
 })

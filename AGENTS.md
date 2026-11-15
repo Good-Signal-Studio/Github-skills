@@ -20,10 +20,13 @@ that did not build the change. Passing unit tests is not that independent verdic
 
 ## Commands and dependencies
 
-Run `node scripts/test.mjs` and run `python -m unittest -v` from
-`babysit-pr/scripts/`. CI uses Node 24 and Python 3.13. Local evidence must name the
-actual versions. The scripts use Node and Python standard libraries. No package
-installation is needed. Git is needed for source verification and fixture creation.
+Run `node scripts/test.mjs` from a clean committed head. This same local and CI
+command runs canonical Node tests, Python watcher tests and committed content
+sync once each. See `docs/testing.md` for targeted checks and the difference
+between content sync and a matching revision pin. CI uses Node 24 and Python
+3.13. Local evidence must name the actual versions. The scripts use Node and
+Python standard libraries. No package installation is needed. Git is needed for
+source verification and fixture creation.
 GitHub operations in skills need an authenticated `gh` CLI. Enrolment is offline
 and uses only read-only local Git commands to verify the pinned source.
 
