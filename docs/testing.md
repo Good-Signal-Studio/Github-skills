@@ -20,8 +20,11 @@ The Node phase passes sorted explicit `.test.mjs` paths from root `scripts/` and
 each canonical skill's `scripts/` to Node's built-in test runner. It excludes
 dotfolders, so tests in installed `.agents` and `.claude` copies do not run again.
 The suites cover enrolment ownership and rollback, PR body and review evidence,
-documentation and README checks, repository standards, discussion and issue
-guidance, commit policy and review gates. Enrolment uses local Git fixtures.
+documentation and README checks, repository standards, discussion lint and
+review gates. Enrolment uses local Git fixtures. The `commit/` and
+`issues-and-releases/` skills contain instructions without executable tests.
+These suites do not prove that a model follows the instructions or that live
+GitHub API operations behave correctly.
 
 The Python phase runs `python -m unittest -v` once from `babysit-pr/scripts/`.
 It covers PR watcher state, review and check decisions, retry and exit behaviour.
