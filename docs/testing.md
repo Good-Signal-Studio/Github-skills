@@ -14,6 +14,11 @@ Successful Python progress goes to stdout, including unittest's normal stderr
 output. A nonzero Python exit retains its stderr diagnostics. This keeps a
 successful command compatible with PowerShell's strict error preference.
 
+On POSIX, create the test checkout under umask `022` so Git writes the
+recorded 0644 and 0755 permissions. A group-writable checkout under umask
+`002` triggers the installer's local permission drift check. Use an isolated
+checkout for this test so existing project permissions stay intact.
+
 ## What the command checks
 
 The Node phase passes sorted explicit `.test.mjs` paths from root `scripts/` and

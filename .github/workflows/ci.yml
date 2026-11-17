@@ -1,11 +1,11 @@
-# Runs every skill's tests on Linux and Windows for each PR and each push to dev or prod.
+# Runs the bundle tests on Linux and Windows for each PR and each push to dev or main.
 # review-gate reads the run of the workflow named "ci" on the exact head, so keep this name.
 name: ci
 
 on:
   pull_request:
   push:
-    branches: [dev, prod]
+    branches: [dev, main]
 
 permissions:
   contents: read
