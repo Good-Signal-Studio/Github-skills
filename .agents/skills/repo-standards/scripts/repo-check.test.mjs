@@ -141,7 +141,7 @@ test('a ci name set in .github/risk-paths is honored', () => {
 })
 
 test('remote URLs parse in both forms', () => {
-  assert.deepEqual(parseRemote('git@github.com:Good-Signal-Studio/Github-skills.git'), { owner: 'Good-Signal-Studio', repo: 'Github-skills' })
+  assert.deepEqual(parseRemote('git@github.com:Jeff-Kazzee/github-skills.git'), { owner: 'Jeff-Kazzee', repo: 'github-skills' })
   assert.deepEqual(parseRemote('https://github.com/o/r'), { owner: 'o', repo: 'r' })
   assert.equal(parseRemote('https://gitlab.com/o/r'), null)
 })

@@ -236,10 +236,10 @@ function checkCi(repo) {
       ? ok(id, owner, `${found.map(w => w.path).join(', ')} runs ${what}`)
       : bad(id, owner, `no workflow runs ${what}`, 'Run --fix to install .github/workflows/skills-check.yml.'))
   }
-  const fetching = holding(/repository:\s*['"]?Good-Signal-Studio\/Github-skills/)
-  const unpinned = fetching.filter(w => !/repository:\s*['"]?Good-Signal-Studio\/Github-skills['"]?[\s\S]{0,200}?ref:\s*['"]?[0-9a-f]{40}\b/.test(w.text))
+  const fetching = holding(/repository:\s*['"]?Jeff-Kazzee\/github-skills/)
+  const unpinned = fetching.filter(w => !/repository:\s*['"]?Jeff-Kazzee\/github-skills['"]?[\s\S]{0,200}?ref:\s*['"]?[0-9a-f]{40}\b/.test(w.text))
   results.push(fetching.length === 0
-    ? bad('gates.pinned', 'repo-standards', 'no workflow fetches the checkers from Good-Signal-Studio/Github-skills', 'Fetch them at a pinned SHA. Use a pinned checker revision.')
+    ? bad('gates.pinned', 'repo-standards', 'no workflow fetches the checkers from Jeff-Kazzee/github-skills', 'Fetch them at a pinned SHA. Never copy them into the repo.')
     : unpinned.length
       ? bad('gates.pinned', 'repo-standards', `checkers not pinned to a commit SHA in ${unpinned.map(w => w.path).join(', ')}`, 'Set ref: to a full 40-character SHA.')
       : ok('gates.pinned', 'repo-standards', 'the checkers are fetched at a pinned commit SHA'))
@@ -358,9 +358,9 @@ function checkAgents(repo) {
   if (!agents) {
     results.push(bad('agents.git-law', 'repo-standards', 'no AGENTS.md', 'Run --fix to install AGENTS.md, then fill its fields.'))
   } else {
-    results.push(/git law|^##\s+(?:git|project policy)\b/im.test(repo.read(agents) ?? '')
-      ? ok('agents.git-law', 'repo-standards', `${agents} declares project Git policy`)
-      : bad('agents.git-law', 'repo-standards', `${agents} does not declare project Git policy`, 'Add the project policy section from references/templates/AGENTS.md.'))
+    results.push(/git law/i.test(repo.read(agents) ?? '')
+      ? ok('agents.git-law', 'repo-standards', `${agents} names the Git law`)
+      : bad('agents.git-law', 'repo-standards', `${agents} does not name the Git law`, 'Add the Git section from references/templates/AGENTS.md.'))
   }
   const claude = repo.find(/^claude\.md$/i, [''])
   if (claude) {
@@ -472,13 +472,13 @@ export function fix(dir, fields = {}) {
 }
 
 // Fields --fix can fill from the checkout: the GitHub owner and name, and a pushed commit of these skills.
-// The SHA counts only when this script sits in a checkout of Good-Signal-Studio/Github-skills, so a copy
+// The SHA counts only when this script sits in a checkout of Jeff-Kazzee/github-skills, so a copy
 // inside another repo never pins that repo's commit.
 export function knownFields(dir) {
   const fields = { ...parseRemote(git(dir, ['remote', 'get-url', 'origin'])) }
   const home = parseRemote(git(HERE, ['remote', 'get-url', 'origin']))
   const sha = git(HERE, ['rev-parse', 'HEAD'])
-  const official = home?.owner === 'Good-Signal-Studio' && home.repo === 'Github-skills'
+  const official = home?.owner === 'Jeff-Kazzee' && home.repo === 'github-skills'
   if (official && sha && git(HERE, ['branch', '-r', '--contains', sha])) fields.github_skills_sha = sha
   return fields
 }

@@ -19,7 +19,10 @@ Capture proof on the actual revision. Report checks that were not run. Keep
 secrets, private records, transcripts and personal details out of public material.
 Preserve both MIT notices beside copied skills and in `.github/good-signal/`.
 
-The bundle includes eleven GitHub skills. References to other drafting or review
+The bundle includes thirteen GitHub skills. Upstream examples name personal infrastructure,
+accounts and templates. Use the consuming project's authorised environments,
+owner and branch rules. Invoke the watcher through Python on systems where its
+upstream launcher lacks execute permission. References to other drafting or review
 skills are optional integrations. For drafting without them, use the project's
 instructions, short factual prose, checked links and a manual diff review.
 Required independent review and project verification remain blocked when the

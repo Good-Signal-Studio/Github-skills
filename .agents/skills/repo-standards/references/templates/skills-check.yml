@@ -29,11 +29,11 @@ jobs:
           ref: ${{ github.event.pull_request.base.sha }}
           path: .base
           persist-credentials: false
-      # One standard for every repo, fetched at a pinned commit. Use the approved pinned bundle or fetch the checkers at a full commit SHA.
+      # One standard for every repo, fetched at a pinned commit. Never copy the checkers into the repo.
       - name: Get the checkers at a pinned commit
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          repository: Good-Signal-Studio/Github-skills
+          repository: Jeff-Kazzee/github-skills
           ref: {{github_skills_sha}}
           path: .standards
           persist-credentials: false
@@ -68,7 +68,7 @@ jobs:
       - name: Get the checkers at a pinned commit
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          repository: Good-Signal-Studio/Github-skills
+          repository: Jeff-Kazzee/github-skills
           ref: {{github_skills_sha}}
           path: .standards
           persist-credentials: false
@@ -89,7 +89,7 @@ jobs:
       - name: Get the checkers at a pinned commit
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          repository: Good-Signal-Studio/Github-skills
+          repository: Jeff-Kazzee/github-skills
           ref: {{github_skills_sha}}
           path: .standards
           persist-credentials: false

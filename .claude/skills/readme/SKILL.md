@@ -62,7 +62,7 @@ Run `unslop` on the prose. Done when no `{{field}}` is left.
 
 ## 4. Check it
 
-Run from the repo root in the project's approved verification environment:
+Run from the repo root, in the repo's checkout on `linveo-16gb` when it has one:
 
 ```sh
 node <this skill's folder>/scripts/readme-check.mjs README.md --online --clone <repo url or path>
@@ -78,10 +78,10 @@ The check fails on any of these:
   look at the visual yourself.
 - With `--clone`, a quick start command that fails on a fresh clone.
 
-`--clone` executes the quick start commands. It is never part of installation.
-Use it only for explicitly approved sandbox verification in the project's approved
-environment. Otherwise leave `--clone` off and report the gap. A URL clones the
-default branch, so pass a checkout path to verify an unmerged branch.
+`--clone` runs the quick start's commands on the machine you run it on. For a repo Jeff
+owns, run it on `linveo-16gb`. For anything else, run it inside a Daytona sandbox. If you
+have neither, leave `--clone` off and say so in your report. A URL clones the default
+branch, so pass the path of a checkout to test a branch before it merges.
 
 `--online` treats a local link outside the folder that holds `.git` as broken. For a tree
 with no `.git` folder, such as an archive export, pass `--root <dir>` to name the root.
@@ -94,13 +94,3 @@ or the project is wrong. Fix whichever one lied.
 Open the change as a normal PR with the `pr-template` skill. Put the check's output in
 Proof. For a public repo, Jeff approves the text before it goes out, because it is
 published in his name.
-
-## Companion skills
-
-Some references name `code-review`, `council`, `interrogate`, `technical-writing`,
-`unslop`, `storybrand-design`, `domain-modeling`, `hill-climb` or a project verify
-skill. Those skills are optional integrations and are not bundled here. For
-drafting, read the project's own instructions, write short factual sentences,
-check links and claims, and review the diff manually. If a required independent
-review or project verification capability is unavailable, record that blocker.
-Do not substitute the builder's own checks or claim that the gate passed.

@@ -2,13 +2,11 @@
 
 {{One line: what this repository is.}}
 
-## Project policy
+## Git
 
-Record this project's branch model, test commands, dependency policy and security
-requirements here. These rules take precedence over shared organisation skills.
-Use one task branch and one writer per worktree. Never merge or publish without
-the repository owner's approval. Do not assume every contributor has a global
-AGENTS.md or that every repository uses the same branch names.
+This repo follows the Git law in `~/AGENTS.md`. One task, one branch, one worktree.
+Branch from `origin/dev` as `task/<id>-<slug>`, squash-merge into `dev`, and promote
+`dev` to `prod` with a merge commit. Every merge waits for Jeff's approval.
 
 ## Commands
 

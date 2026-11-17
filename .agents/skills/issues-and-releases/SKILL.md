@@ -119,13 +119,3 @@ Status: Fix merged, not released.
 ```
 
 After v2.3.2 ships, close it as `Completed` with "Fixed in #418, released in v2.3.2."
-
-## Companion skills
-
-Some references name `code-review`, `council`, `interrogate`, `technical-writing`,
-`unslop`, `storybrand-design`, `domain-modeling`, `hill-climb` or a project verify
-skill. Those skills are optional integrations and are not bundled here. For
-drafting, read the project's own instructions, write short factual sentences,
-check links and claims, and review the diff manually. If a required independent
-review or project verification capability is unavailable, record that blocker.
-Do not substitute the builder's own checks or claim that the gate passed.

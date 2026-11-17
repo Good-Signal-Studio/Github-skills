@@ -34,7 +34,7 @@ not in the repo yet. `skip` means the input could not be read.
 | `gates.integrity` | repo-standards | Some workflow runs `repo-check.mjs gate` | `--fix` installs `skills-check.yml` |
 | `gates.pr-body` | `pr-template` | Some workflow runs `repo-check.mjs pr` or `pr-body.mjs check --pr` | `--fix` installs `skills-check.yml` |
 | `gates.readme` | `readme` | Some workflow runs `readme-check.mjs --online` | `--fix` installs `skills-check.yml` |
-| `gates.pinned` | repo-standards | Every workflow that checks out `Good-Signal-Studio/Github-skills` pins a 40-character SHA | Pin it. Never copy the checkers into the repo |
+| `gates.pinned` | repo-standards | Every workflow that checks out `Jeff-Kazzee/github-skills` pins a 40-character SHA | Pin it. Never copy the checkers into the repo |
 | `gates.block-only` | repo-standards | The gate workflows have no write permission and close nothing | Remove the write scope |
 | `gates.on-edit` | `pr-template` | Warns when a body edit does not rerun the body check | Add `edited` to the `pull_request` types |
 | `gates.docs` | `repo-docs` | Pending | Wait for `repo-docs` |

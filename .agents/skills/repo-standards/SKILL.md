@@ -5,12 +5,6 @@ description: Audits one repository against these GitHub skills and installs what
 
 # Repo standards
 
-The consuming project's instructions, branch model and existing templates take
-precedence. This is an audit and setup guide. Enrolment alone installs no CI or
-branch settings. Treat the `dev` and `prod` routes below as examples for projects
-that have explicitly adopted that model. Use the declared project branches in
-other repositories and request approval for changes to repository settings.
-
 A standard that lives only in a skill is a suggestion. This skill makes each repo
 enforce the other skills: files GitHub shows to contributors, and a required check
 that blocks a merge when a PR body or README breaks the format.
@@ -21,7 +15,7 @@ a skill here, and record the ones you set aside in `references/checklist.md`.
 
 ## 1. Audit
 
-Run from the repo's checkout in its approved verification environment:
+Run from the repo's checkout, on `linveo-16gb` when the repo has one there:
 
 ```sh
 node <this skill's folder>/scripts/repo-check.mjs . --github <owner/repo>
@@ -69,9 +63,8 @@ Done when the audit shows no `fail` except checks only Jeff can settle, each lis
 
 Keep these properties when you edit it:
 
-- Fetch workflow checkers from `Good-Signal-Studio/Github-skills` at a full commit
-  SHA. Repository skill snapshots use the separately recorded bundle revision.
-  Do not substitute a mutable branch or silently update either source.
+- Fetch the checkers from `Jeff-Kazzee/github-skills` at a full commit SHA. Never copy
+  them into the repo. One pinned standard cannot drift.
 - Read the rules from the PR's base commit, never from the PR.
 - Use `pull_request`. Never `pull_request_target` with a checkout, and never run PR
   code under a write token.
@@ -140,13 +133,3 @@ the SECURITY.md response times, writes CONTRIBUTING.md with `contributing`, and 
 the dev ruleset to the batched ask.
 
 Sources and measured numbers: `references/sources.md`.
-
-## Companion skills
-
-Some references name `code-review`, `council`, `interrogate`, `technical-writing`,
-`unslop`, `storybrand-design`, `domain-modeling`, `hill-climb` or a project verify
-skill. Those skills are optional integrations and are not bundled here. For
-drafting, read the project's own instructions, write short factual sentences,
-check links and claims, and review the diff manually. If a required independent
-review or project verification capability is unavailable, record that blocker.
-Do not substitute the builder's own checks or claim that the gate passed.

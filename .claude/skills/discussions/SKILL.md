@@ -137,13 +137,3 @@ Docs: https://vite.dev/config/shared-options.html#base
 `discussion-check.mjs answer.md --kind answer` passes. Jeff approves both texts. Then
 you post the reply on the issue, use **Convert to discussion**, and post the answer in
 the new discussion. The asker marks it as the answer.
-
-## Companion skills
-
-Some references name `code-review`, `council`, `interrogate`, `technical-writing`,
-`unslop`, `storybrand-design`, `domain-modeling`, `hill-climb` or a project verify
-skill. Those skills are optional integrations and are not bundled here. For
-drafting, read the project's own instructions, write short factual sentences,
-check links and claims, and review the diff manually. If a required independent
-review or project verification capability is unavailable, record that blocker.
-Do not substitute the builder's own checks or claim that the gate passed.

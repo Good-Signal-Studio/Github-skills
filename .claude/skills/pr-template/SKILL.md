@@ -5,10 +5,9 @@ description: Writes every pull request title and description in Jeff's format (E
 
 # PR template
 
-Use this body as the organisation default for code, docs, config and skills.
-The consuming repository's instructions and PR template take precedence. Adapt the
-body and checker to that declared shape. A reader who stops after the ELI5 knows
-what changed, and a reader who goes to the end can check every claim.
+Every PR gets this body: code, docs, config, skills, any repo. It replaces every
+other PR body format, for every agent on every host. A reader who stops after the
+ELI5 knows what changed, and a reader who goes to the end can check every claim.
 
 Hold to these on every PR:
 
@@ -30,8 +29,8 @@ Hold to these on every PR:
 2. **Capture proof.** `references/evidence.md` covers captures, uploads and hosts
    with no GitHub login.
 3. **Write the body.** `references/body.md` holds the template and its rules.
-   `references/example.md` is an original illustrative organisation example. Read it
-   once per session before your first draft. If asked to make a PR easy to review, read
+   `references/example.md` is the PR Jeff chose as the model, so read it once per
+   session before your first draft. If asked to make a PR easy to review, read
    `references/easy-to-review.md`.
 4. **Write the title.** It usually becomes the commit subject, so follow the repo's
    recent merged PRs, and say why the change matters.
@@ -77,13 +76,3 @@ Open the PR as a signed-in viewer and confirm each image draws. If no signed-in
 browser is reachable, say that in your reply.
 
 Done when the check passes on the head and you have seen the images draw.
-
-## Companion skills
-
-Some references name `code-review`, `council`, `interrogate`, `technical-writing`,
-`unslop`, `storybrand-design`, `domain-modeling`, `hill-climb` or a project verify
-skill. Those skills are optional integrations and are not bundled here. For
-drafting, read the project's own instructions, write short factual sentences,
-check links and claims, and review the diff manually. If a required independent
-review or project verification capability is unavailable, record that blocker.
-Do not substitute the builder's own checks or claim that the gate passed.

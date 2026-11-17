@@ -48,7 +48,7 @@ one Markdown line per file. Paste those lines into the body. It refuses a name t
 ref already holds with different bytes, unless you pass `--replace`, and it verifies
 the ref landed. A push that loses a race fails and leaves nothing changed.
 
-**No GitHub login in the project's approved verification environment.** Capture and write
+**No GitHub login on this host** (a Daytona sandbox, for one). Capture and write
 `body.md` here, with each file's name where its image will go, and run
 `check body.md`, which needs no login. Copy the media and `body.md` out to a host with `gh`, then run
 `attach`, swap the names for the printed lines, and open the PR there. Keep GitHub

@@ -200,13 +200,3 @@ A reviewer writes on `src/parse.ts:40`: "This loops over the list twice." You ag
    URLs. Resolve the first thread. Resolve the decline too, because Jeff read its
    reason and benchmark when he approved the text.
 4. Post the round summary, request review from both reviewers, and start `pr-wait`.
-
-## Companion skills
-
-Some references name `code-review`, `council`, `interrogate`, `technical-writing`,
-`unslop`, `storybrand-design`, `domain-modeling`, `hill-climb` or a project verify
-skill. Those skills are optional integrations and are not bundled here. For
-drafting, read the project's own instructions, write short factual sentences,
-check links and claims, and review the diff manually. If a required independent
-review or project verification capability is unavailable, record that blocker.
-Do not substitute the builder's own checks or claim that the gate passed.
