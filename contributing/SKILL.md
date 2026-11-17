@@ -67,7 +67,7 @@ Follow the Writing law. Run `unslop` on the prose. Done when no `{{field}}` is l
 
 ## 4. Check it
 
-Run from the repo root in the project's approved verification environment:
+Run from the repo root, in the repo's checkout on `linveo-16gb` when it has one:
 
 ```sh
 node <this skill's folder>/scripts/contributing-check.mjs CONTRIBUTING.md --online --clone <repo url or path>
@@ -92,10 +92,9 @@ The check fails on any of these:
 - With `--clone`, a setup or test command, or a pointer file's command, that fails on a
   fresh clone. The check skips the clone and the first `cd` into the cloned folder.
 
-`--clone` executes setup and test commands. It is never part of installation. Use
-it only for explicitly approved sandbox verification in the project's approved
-environment. Otherwise leave `--clone` off and report the gap. Pass `--root <dir>`
-when the document is not inside a git checkout.
+`--clone` runs the commands on the machine you run it on. For a repo Jeff owns, run it
+on `linveo-16gb`. For anything else, run it in a sandbox, or leave `--clone` off and say
+so. Pass `--root <dir>` when the file is not inside a git checkout.
 
 Done when the command exits 0 on the commit you will publish. A failure means the guide
 or the project is wrong. Fix whichever one lied.
@@ -122,13 +121,3 @@ Reporting issues ends with "Do not report a security vulnerability in a public i
 Follow [SECURITY.md](.github/SECURITY.md) instead." Running tests lists `pnpm test` and
 `pnpm lint`. The check then prints a line that starts with `ok: CONTRIBUTING.md` and
 exits 0.
-
-## Companion skills
-
-Some references name `code-review`, `council`, `interrogate`, `technical-writing`,
-`unslop`, `storybrand-design`, `domain-modeling`, `hill-climb` or a project verify
-skill. Those skills are optional integrations and are not bundled here. For
-drafting, read the project's own instructions, write short factual sentences,
-check links and claims, and review the diff manually. If a required independent
-review or project verification capability is unavailable, record that blocker.
-Do not substitute the builder's own checks or claim that the gate passed.

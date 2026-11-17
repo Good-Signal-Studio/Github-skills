@@ -92,7 +92,7 @@ Done when the check in step 5 passes.
 
 ## 5. Check it
 
-Run from the repo root in the project's approved verification environment:
+Run from the repo root, in the repo's checkout on `linveo-16gb` when it has one:
 
 ```sh
 node <this skill's folder>/scripts/docs-check.mjs docs
@@ -145,13 +145,3 @@ faq.md:1: orphan: no link path from README.md
 
 The heading is "The WAL journal". Change the link to `#the-wal-journal` and add `faq.md` to the index. The rerun
 prints `ok: docs, 7 pages`.
-
-## Companion skills
-
-Some references name `code-review`, `council`, `interrogate`, `technical-writing`,
-`unslop`, `storybrand-design`, `domain-modeling`, `hill-climb` or a project verify
-skill. Those skills are optional integrations and are not bundled here. For
-drafting, read the project's own instructions, write short factual sentences,
-check links and claims, and review the diff manually. If a required independent
-review or project verification capability is unavailable, record that blocker.
-Do not substitute the builder's own checks or claim that the gate passed.

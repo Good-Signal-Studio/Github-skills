@@ -5,6 +5,12 @@ Good Signal Studio's Github Skills, templates for great Github etiquette.
 Shared GitHub skills for Codex and Claude Code, with pinned project snapshots.
 The original description above is retained from the organisation repository.
 
+## Branches and pull requests
+
+Use [GitHub Flow](https://github.com/Jeff-Kazzee/github-skills/blob/649e340019a49f29d27bc940f0822d2c815dff8e/github-flow/SKILL.md) for short-lived task branches from `dev` and PRs back to `dev`. Use [Git Flow](https://github.com/Jeff-Kazzee/github-skills/blob/649e340019a49f29d27bc940f0822d2c815dff8e/git-flow/SKILL.md) for promotion PRs from `dev` to `main`. Install both complete skill folders, including their references, from personal source revision `649e340019a49f29d27bc940f0822d2c815dff8e`.
+
+Use the [PR format](https://github.com/Jeff-Kazzee/github-skills/blob/649e340019a49f29d27bc940f0822d2c815dff8e/pr-template/SKILL.md), [review gate](https://github.com/Jeff-Kazzee/github-skills/blob/649e340019a49f29d27bc940f0822d2c815dff8e/review-gate/SKILL.md) and [review comments](https://github.com/Jeff-Kazzee/github-skills/blob/649e340019a49f29d27bc940f0822d2c815dff8e/review-comments/SKILL.md). Show Jeff the exact text and destination and wait for approval before posting or editing PR text or comments. If the wording or destination changes, get fresh approval. Jeff approves each checked head before merge. Squash task PRs into `dev`. Promote `dev` to `main` with a merge commit, then sync `main` back to `dev`. Follow the GitHub Flow cleanup checks before removing a finished task branch.
+
 ## Features
 
 - Preserve each project's branch, test, dependency and security instructions.
@@ -61,7 +67,7 @@ does not install or enable it, and it changes no global settings by itself.
 [The architecture](docs/architecture.md) describes inventory, ownership and safe
 updates. [Enrolment](docs/enrolment.md) covers plan, apply, checks, refusal, recovery
 and community export. [Testing](docs/testing.md) explains the single local and CI
-command and its coverage. Facts below were checked against this tree on 2026-11-15.
+command and its coverage. Facts below were checked against this tree on 2026-11-17.
 
 | Folder | Contents |
 | --- | --- |
@@ -69,6 +75,8 @@ command and its coverage. Facts below were checked against this tree on 2026-11-
 | `commit/` | Commit and merge-message guidance |
 | `contributing/` | Contribution-guide templates and checks |
 | `discussions/` | Discussion drafts, templates and lint |
+| `git-flow/` | Promotion and release handoff |
+| `github-flow/` | Task branches, pull requests and cleanup |
 | `issues-and-releases/` | Issue triage and release documentation |
 | `pr-template/` | PR body guidance, evidence workflow and offline checker |
 | `readme/` | README templates, images and link checks |
@@ -81,11 +89,12 @@ command and its coverage. Facts below were checked against this tree on 2026-11-
 | `community/` | GitHub issue and PR defaults ready for separate publication |
 | `.claude-plugin/` | Optional Claude marketplace and plugin manifests |
 
-The eleven skill folders are imported in full. The inventory is derived from their
+All 13 skill folders and their supporting files are included. The worked example
+in `pr-template/references/example.md` is the sole content exception. The inventory is derived from their
 root `SKILL.md` files. Companion skills such as `council`, `interrogate`,
 `code-review`, `technical-writing`, `unslop`, `storybrand-design`, `domain-modeling`,
 `hill-climb` and a project's verify skill are not included. Drafting has a plain
-fallback in each skill. Required independent review stays blocked when its
+fallback in the shared defaults. Required independent review stays blocked when its
 capability is unavailable. Passing tests do not replace that review.
 
 GitHub operations in the skills need an authenticated `gh` CLI. The Python PR

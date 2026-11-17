@@ -40,7 +40,7 @@ function fixture(t) {
   put(bundleRoot, 'LICENSE', 'MIT organisation\n')
   put(bundleRoot, 'LICENSE.upstream', 'MIT upstream\n')
   put(bundleRoot, 'UPSTREAM.md', '# Provenance\n')
-  put(bundleRoot, 'upstream-manifest.json', '{"revision":"upstream"}\n')
+  put(bundleRoot, 'upstream-manifest.json', '{"repository":"https://example.invalid/upstream","revision":"upstream"}\n')
   put(bundleRoot, 'defaults/DEFAULTS.md', '# Project rules win\n')
   put(bundleRoot, 'community/.github/ISSUE_TEMPLATE/bug.yml', 'name: Bug report\n')
   put(bundleRoot, 'community/.github/ISSUE_TEMPLATE/feature.yml', 'name: Feature request\n')
@@ -80,6 +80,8 @@ test('fresh repo receives both complete sibling payloads, licences and an exact 
     assert.equal(sibling.default, 42)
   }
   const manifest = JSON.parse(readFileSync(join(options.repoPath, '.github/good-signal/manifest.json')))
+  assert.equal(manifest.upstream.repository, 'https://example.invalid/upstream')
+  assert.equal(manifest.upstream.revision, 'upstream')
   assert.equal(manifest.bundle.revision, options.revision)
   assert.equal(manifest.bundle.sourceFilesSha256.length, 64)
   assert.equal(manifest.modes['.agents/skills/repo-standards/scripts/sibling.mjs'], 0o755)

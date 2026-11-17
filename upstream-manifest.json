@@ -1,6 +1,6 @@
 {
   "repository": "https://github.com/Jeff-Kazzee/github-skills",
-  "revision": "8ce6fda01a1cca24b20a406e3efd8f087bf70264",
+  "revision": "649e340019a49f29d27bc940f0822d2c815dff8e",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
@@ -25,9 +25,9 @@
     },
     {
       "path": "README.md",
-      "gitBlob": "f61eae94a734c43c8db92920ea793bd07a96fb49",
-      "sha256": "64cd39fde4336f16ebf3f9a47a08def233bec9e3db4d1e13541d21b17fcaf8a8",
-      "bytes": 2807,
+      "gitBlob": "9b628553d4dd5fb25b30637a78820e1414e7a246",
+      "sha256": "650c52e53f7e68534da1bb8703f6004c4bc71924db0d20870d3c13c87bf1d843",
+      "bytes": 3763,
       "gitMode": "100644"
     },
     {
@@ -196,6 +196,34 @@
       "gitBlob": "5d4fd071cdb7c78ca63958419a98f32997340658",
       "sha256": "c2b125f6888c543f16cab1bf77e050926472078955a70899fef966943676ae37",
       "bytes": 1029,
+      "gitMode": "100644"
+    },
+    {
+      "path": "git-flow/SKILL.md",
+      "gitBlob": "3da4d0a201c3ea8ef86287108d9c648137e8450a",
+      "sha256": "a6f70421c201b0abe1641a8e06cc93d30e6af360d3c3e30b09526db8fb72884e",
+      "bytes": 3799,
+      "gitMode": "100644"
+    },
+    {
+      "path": "git-flow/references/handoff.md",
+      "gitBlob": "dc57e16d3f4d721ebce8a2b35020e9f054a9389e",
+      "sha256": "19aec91c16be30f22b45f19a2a2e4fb53745d49d22df34a4899915b6ae54e111",
+      "bytes": 1667,
+      "gitMode": "100644"
+    },
+    {
+      "path": "github-flow/SKILL.md",
+      "gitBlob": "73bd8a9cb224e1670693e24bb974cf0c4bf70ebb",
+      "sha256": "a856914bff6f751b95ef31564f4af81c784e7e5427a478bcb8f599f73d7e1d95",
+      "bytes": 3160,
+      "gitMode": "100644"
+    },
+    {
+      "path": "github-flow/references/formats.md",
+      "gitBlob": "78b5ccb5c5ea56726cdf73b8c7431d5b54c35dd4",
+      "sha256": "5bb1b08d3e2b8301ebe8fa5c778934ce25a8192b6bc031e0abad2163b12140da",
+      "bytes": 1707,
       "gitMode": "100644"
     },
     {

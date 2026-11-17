@@ -233,10 +233,11 @@ export function plan({ repoPath, bundleRoot, revision, communityTarget = false, 
     if (ownPr || !prPresent) desired.set('.github/PULL_REQUEST_TEMPLATE.md', source.files.get('community/.github/PULL_REQUEST_TEMPLATE.md'))
     else result.skips.push('Existing project PR template takes precedence')
     if (previous) for (const path of Object.keys(previous.files)) if (!desired.has(path)) result.conflicts.push(`Previously owned path was removed from the bundle. Reconcile it manually: ${path}`)
+    const provenance = JSON.parse(source.files.get('upstream-manifest.json'))
     const next = {
       schema: 1, mode: result.mode,
       bundle: { repository: BUNDLE_REPOSITORY, revision: source.revision, sourceFilesSha256: source.hash, sourceFiles: source.hashes, sourceFileModes: source.modes },
-      upstream: { repository: 'https://github.com/Jeff-Kazzee/github-skills', revision: '8ce6fda01a1cca24b20a406e3efd8f087bf70264', manifest: '.github/good-signal/upstream-manifest.json' },
+      upstream: { repository: provenance.repository, revision: provenance.revision, manifest: '.github/good-signal/upstream-manifest.json' },
       licences: ['.github/good-signal/LICENSE', '.github/good-signal/LICENSE.upstream'],
       skills: result.skills, files: {}, modes: {}, blocks: {},
     }

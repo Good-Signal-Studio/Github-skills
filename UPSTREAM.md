@@ -1,85 +1,35 @@
 # Upstream provenance
 
-Imported on 2026-11-15 from the public repository
-https://github.com/Jeff-Kazzee/github-skills at the full commit
-`8ce6fda01a1cca24b20a406e3efd8f087bf70264` on its `prod` branch.
-The import copied the snapshot without importing source history.
+On 2026-11-17 the personal repository's `dev` branch pointed to
+[`649e340019a49f29d27bc940f0822d2c815dff8e`](https://github.com/Jeff-Kazzee/github-skills/tree/649e340019a49f29d27bc940f0822d2c815dff8e).
+The source manifest inventories all 87 tracked files by path, Git mode, blob ID,
+SHA-256 and byte length. The 13 skill directories contain 83 files, including
+all references, scripts, tests and fixtures. All 83 Git modes match. Of those
+files, 82 retain the original bytes.
 
-`upstream-manifest.json` records all 83 source paths, Git blob IDs, SHA-256 hashes
-and byte lengths before adaptations. It covers the complete source tree, including
-the source root README, gitignore and CI. All eleven root skill folders were copied
-in full, including scripts, references, tests and fixtures. The source README and
-gitignore were not adopted as root files. The destination's original two README
-lines and its original licence remain. CI was imported and extended to include
-enrolment tests. The source MIT licence is preserved verbatim as LICENSE.upstream.
+## Worked example
 
-## Attribution exception
+The sole replacement is `pr-template/references/example.md`. Its upstream blob
+is `4d6c07f9d16342cacc0597b30448842aceead14d`. The upstream file reproduces a
+worked Orca PR about retaining manual sidebar order when grouping primary
+checkouts and linked worktrees by repository. It runs from the introductory
+note through the PR checklist. The source describes the example as kept as
+written. Third-party attribution for the reproduced PR remains unresolved.
+All three trees retain the existing fictional Good Signal Studio enrolment
+example, blob `2c43fde4dd74cc2ccb9ac04ab0b05c590a625dc1`.
 
-`pr-template/references/example.md` originally contained a long Orca passage
-described as kept as written. Its original third-party attribution has not been
-verified. That passage is not republished. The file was replaced with an original,
-clearly labelled imaginary organisation example. This exception remains unresolved
-for anyone who wants to restore the original passage. Preserve this warning in
-rollout records and later imports.
+## Agency integration
 
-The source's MIT notice establishes its declared licence. It is not an independent
-third-party ownership audit of every passage or reference. Reference documents and
-their source URLs are retained. No ownership is claimed over the external works
-they cite.
+The agency README retains its branch, review and approval policy. Its own
+gitignore and CI serve this repository. The two MIT notices remain verbatim.
+LICENSE.upstream contains the personal repository's licence. Source history
+was not imported.
 
-## Portability adaptations
-
-- The PR skill defers to the consuming repository's instructions and template.
-- Active verification routes use the project's approved environment. Machine-specific
-  Linveo and Daytona instructions were removed from active skills.
-- External drafting and review skills are optional integrations. Drafting has a plain
-  fallback. Required independent reviews remain blocked when unavailable.
-- The checker identity and workflow templates use Good-Signal-Studio/Github-skills.
-  The trusted human Jeff-Kazzee remains unchanged in the risk-floor rules.
-- CODEOWNERS uses the valid human account @Jeff-Kazzee. The AGENTS starter is portable
-  and does not impose a universal home instruction file or branch naming scheme.
-- Template fetches retain full-SHA requirements. Snapshot deployment is documented
-  alongside checker fetches. Upload approval and whole-body rendering warnings remain.
-- The CI test runner expands explicit test paths on Windows and excludes copied
-  runtime payloads, so self-enrolment does not multiply the root test suite.
-- The Python `pr-wait` launcher is marked executable in the organisation bundle.
-  The three upstream executable modes are retained. Installed copies carry those
-  modes and record them in their manifest. Git attributes preserve source bytes.
-
-Adapted source paths are listed below. The exact changes are reviewable against
-the original blob IDs and hashes in the source manifest.
-
-- `.github/workflows/ci.yml`.
-- `babysit-pr/SKILL.md`.
-- `commit/SKILL.md`.
-- `contributing/SKILL.md`.
-- `discussions/SKILL.md`.
-- `issues-and-releases/SKILL.md`.
-- `pr-template/SKILL.md`.
-- `pr-template/references/evidence.md`.
-- `pr-template/references/example.md`.
-- `readme/SKILL.md`.
-- `repo-docs/SKILL.md`.
-- `repo-standards/SKILL.md`.
-- `repo-standards/references/checklist.md`.
-- `repo-standards/references/templates/AGENTS.md`.
-- `repo-standards/references/templates/CODEOWNERS`.
-- `repo-standards/references/templates/skills-check.yml`.
-- `repo-standards/scripts/repo-check.mjs`.
-- `repo-standards/scripts/repo-check.test.mjs`.
-- `review-comments/SKILL.md`.
-- `review-gate/SKILL.md`.
-
-## Organisation additions
-
-The installer, its behavioural tests, root project instructions, policy, docs,
-contribution guide, optional Claude manifests and community export are organisation
-additions. Generated per-repository snapshots are declared in their installed
-manifest with a distinct full bundle revision and SHA-256 file hashes. Preserve
-both notices when redistributing those snapshots.
-
-The community forms and PR template are byte copies of the retained source
-templates. The community repo has not been created or activated by this work.
-Publication requires separate approval. No credentials, transcripts, environment
-files or private audit material are part of the import. A pre-publication scan of
-the final candidate is still required after later edits.
+The installer, community export, templates, project instructions, documentation
+and Claude plugin metadata belong to the agency integration. Project instructions
+and defaults/DEFAULTS.md govern use of upstream examples that name personal
+accounts, environments or other skills. The upstream checker and its templates
+retain their original repository identities. Review those settings before adopting
+them in another project. Both runtimes receive complete local skill copies and
+the two licence notices. Their installed manifest records the agency payload
+revision separately from the personal source revision.
