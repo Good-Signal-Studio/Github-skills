@@ -81,6 +81,11 @@ including a directory that contains only `config.yml`. Root, `.github/` and
 installs missing issue and PR templates only. It does not install the example CI,
 security policy, CODEOWNERS or full AGENTS template.
 
+If adopting the repository standards templates separately, replace
+`{{owner}}` in CODEOWNERS with a valid user or team. The skills-check workflow
+fetches `Jeff-Kazzee/github-skills`. Set `{{github_skills_sha}}` to a reviewed
+commit in the named repository and confirm its checker paths exist there.
+
 ## Updates and rollback
 
 Commit the consumer's installed files after review. To update, check out a new

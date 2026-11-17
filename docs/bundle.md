@@ -13,14 +13,16 @@ Shared GitHub skills for Codex and Claude Code, with pinned project snapshots.
 ## Quick start
 
 Use Git and Node 22.18 or newer, or Node 24.2 or newer. The scripts use standard
-libraries and need no package install. Clone this repository and inspect a plan
-for an existing target checkout. Replace the target path for your machine.
+libraries and need no package install. Use an agency commit that contains the
+bundle. The following candidate snapshot includes all 13 skills. It becomes
+fetchable once the task branch is published. For adoption, use the agency
+revision your project has reviewed.
 
 ```sh
-git clone https://github.com/Good-Signal-Studio/Github-skills.git
+git clone --no-checkout https://github.com/Good-Signal-Studio/Github-skills.git
 cd Github-skills
-git rev-parse HEAD
-node scripts/enrol.mjs plan --repoPath /work/my-project --bundleRoot . --revision <full-SHA-from-the-previous-command>
+git checkout --detach e1ab55465cac4ca3526c0951abbff2cbed4b12ce
+node scripts/enrol.mjs plan --repoPath /work/my-project --bundleRoot . --revision e1ab55465cac4ca3526c0951abbff2cbed4b12ce
 ```
 
 The plan is read-only. It displays existing instructions, intended files, skips

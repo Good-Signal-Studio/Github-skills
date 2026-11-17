@@ -29,6 +29,12 @@ contain instructions without executable tests of their own.
 These suites do not prove that a model follows the instructions or that live
 GitHub API operations behave correctly.
 
+Personal upstream issues [8](https://github.com/Jeff-Kazzee/github-skills/issues/8)
+and [9](https://github.com/Jeff-Kazzee/github-skills/issues/9) track historical
+cases where the PR watcher reported green. Their status on this pin is unverified.
+Before accepting a PR, compare the expected checks with GitHub's completed
+results and verify the commit each result covers.
+
 The Python phase runs `python -m unittest -v` once from `babysit-pr/scripts/`.
 It covers PR watcher state, review and check decisions, retry and exit behaviour.
 The runner does not contact GitHub or execute the installed skill copies.
