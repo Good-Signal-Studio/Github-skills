@@ -1,4 +1,7 @@
 # Github-skills
+
+[Bundle guide, skill inventory and installation](docs/bundle.md)
+
 Good Signal Studio's Github Skills, templates for great Github etiquette.
 
 ## Branches and pull requests
