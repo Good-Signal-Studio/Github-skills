@@ -32,8 +32,8 @@ and uses only read-only local Git commands to verify the pinned source.
 
 ## Maintenance
 
-Keep both licences verbatim. Record upstream adaptations in `UPSTREAM.md`. Do not
-republish the removed upstream worked example while its provenance is unresolved.
+Keep the licence notices verbatim. Record upstream provenance in `UPSTREAM.md`.
+Carry the Orca credit and licence notice with the worked PR example.
 Change the installer and its tests together. Never bypass a collision or use a
 force flag to overwrite an existing project's work. Read `docs/enrolment.md`
 before changing ownership, instruction blocks or transaction recovery.

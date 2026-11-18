@@ -82,9 +82,9 @@ command and its coverage. Facts below were checked against this tree on 2026-11-
 | `community/` | GitHub issue and PR defaults ready for separate publication |
 | `.claude-plugin/` | Optional Claude marketplace and plugin manifests |
 
-All 13 skill folders and their supporting files are included. The worked example
-in `pr-template/references/example.md` is the sole content exception. The inventory is derived from their
-root `SKILL.md` files. Companion skills such as `council`, `interrogate`,
+All 13 skill folders and their supporting files match the pinned source. The
+inventory is derived from their root `SKILL.md` files. Companion skills such
+as `council`, `interrogate`,
 `code-review`, `technical-writing`, `unslop`, `storybrand-design`, `domain-modeling`,
 `hill-climb` and a project's verify skill are not included. Drafting has a plain
 fallback in the shared defaults. Required independent review stays blocked when its
@@ -117,9 +117,9 @@ Generated copies remain tracked and checked, but their tests are not rerun.
 
 See [CONTRIBUTING.md](../CONTRIBUTING.md) for setup, tests and the review process.
 Maintain this guide when the inventory, commands or deployment behaviour changes.
-Update the upstream pin through a reviewed task PR, retain both licences, rerun
-the complete suite and inspect every source change. Keep provenance exceptions
-visible in [UPSTREAM.md](../UPSTREAM.md).
+Update the upstream pin through a reviewed task PR, retain the licence notices,
+rerun the complete suite and inspect every source change. Record provenance in
+[UPSTREAM.md](../UPSTREAM.md).
 
 ## License
 
@@ -130,6 +130,5 @@ consumers alongside the organisation notice. [UPSTREAM.md](../UPSTREAM.md) and t
 Source history was not imported. This is not an independent audit of every third
 party's rights in the upstream repository.
 
-The upstream Orca worked example has unresolved original attribution and is not
-republished. Its path now holds an original, labelled organisation illustration.
-This exception remains open and is documented in [UPSTREAM.md](../UPSTREAM.md).
+The credited Orca example and its MIT licence notice are documented in
+[UPSTREAM.md](../UPSTREAM.md#worked-example).

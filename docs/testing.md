@@ -28,7 +28,7 @@ The suites cover enrolment ownership and rollback, PR body and review evidence,
 documentation and README checks, repository standards, discussion lint and
 review gates. Enrolment uses local Git fixtures. The upstream inventory test
 compares all 83 skill paths, modes and Git blobs with the committed canonical,
-Codex and Claude trees. It pins the approved replacement example separately.
+Codex and Claude trees.
 The `commit/`, `git-flow/`, `github-flow/` and `issues-and-releases/` skills
 contain instructions without executable tests of their own.
 These suites do not prove that a model follows the instructions or that live
