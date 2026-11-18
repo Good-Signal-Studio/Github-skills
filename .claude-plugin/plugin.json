@@ -1,0 +1,6 @@
+{
+  "name": "gss-github",
+  "version": "1.0.0",
+  "description": "Good Signal Studio's GitHub skills for project workflows.",
+  "skills": "."
+}

@@ -1,0 +1,6 @@
+.audit/
+__pycache__/
+*.pyc
+# Keep the project's Claude router and portable skill snapshots in Git.
+!.claude/
+!.claude/**

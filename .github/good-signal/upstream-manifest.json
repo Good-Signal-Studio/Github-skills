@@ -1,0 +1,615 @@
+{
+  "repository": "https://github.com/Jeff-Kazzee/github-skills",
+  "revision": "649e340019a49f29d27bc940f0822d2c815dff8e",
+  "files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "gitBlob": "7f44151be44b76519c1b6d8a63f51d530d3cc4b6",
+      "sha256": "db296323d117a8420e169107f6bb715477f124d9afd1a1bd4422a72068cc684f",
+      "bytes": 1039,
+      "gitMode": "100644"
+    },
+    {
+      "path": ".gitignore",
+      "gitBlob": "b4bc5378be5a08859a52a024873e7f70ef0ba607",
+      "sha256": "235f1fb09aff391a0d326e977a7675cafd2aee644c75928fdb3e3aa125b7998e",
+      "bytes": 33,
+      "gitMode": "100644"
+    },
+    {
+      "path": "LICENSE",
+      "gitBlob": "d744f785d716c88ef6ac7121863177a9dd7f5a4d",
+      "sha256": "926c9da1700c971869d5afebad43508a2ad7f19b7968fb2a939ccc5d523e5f68",
+      "bytes": 1068,
+      "gitMode": "100644"
+    },
+    {
+      "path": "README.md",
+      "gitBlob": "9b628553d4dd5fb25b30637a78820e1414e7a246",
+      "sha256": "650c52e53f7e68534da1bb8703f6004c4bc71924db0d20870d3c13c87bf1d843",
+      "bytes": 3763,
+      "gitMode": "100644"
+    },
+    {
+      "path": "babysit-pr/SKILL.md",
+      "gitBlob": "78104b38d50026440626046c2bea79474198a131",
+      "sha256": "1d714b3636bb31fe8518f26e9cc81969ff9ac5afada14a4f74774777c4433dec",
+      "bytes": 10673,
+      "gitMode": "100644"
+    },
+    {
+      "path": "babysit-pr/references/findings.md",
+      "gitBlob": "47528f64982e6c41935d6391c6db103a7f8e6230",
+      "sha256": "729b43ebdd938a4f28234e985d4006eec04ebdac8c443ef33d57f031ab678ad0",
+      "bytes": 8800,
+      "gitMode": "100644"
+    },
+    {
+      "path": "babysit-pr/references/reply-templates.md",
+      "gitBlob": "c7d67a896f69fd999d0f9a69cf73fc9054e9548c",
+      "sha256": "e7522688bf68a1d431c977a641d597005175feecf84b2ab09d02e870edea3107",
+      "bytes": 6169,
+      "gitMode": "100644"
+    },
+    {
+      "path": "babysit-pr/references/sources.md",
+      "gitBlob": "1d4e60ab3619dd9e6aa83fc2959a3c81187a4804",
+      "sha256": "bc5e8e9704beca96c7196a8fd4a5e12cca275ef3378a295f1ce2365d86339a7c",
+      "bytes": 25186,
+      "gitMode": "100644"
+    },
+    {
+      "path": "babysit-pr/references/watching.md",
+      "gitBlob": "7f0df46b92190b9501dac2ca71d14395dedc3c67",
+      "sha256": "25f11de185e96237b7b56c9eee0fcb46f6789abd71137d25f25a680c2fbf4bab",
+      "bytes": 4895,
+      "gitMode": "100644"
+    },
+    {
+      "path": "babysit-pr/scripts/pr-wait",
+      "gitBlob": "ac7a141b898997b8c70c55247361666ca62f64b9",
+      "sha256": "1f0fd4d58dbd13841360bd5f7d985ddbee1d5f7ecd57bb756d37b1585f1343f2",
+      "bytes": 35620,
+      "gitMode": "100644"
+    },
+    {
+      "path": "babysit-pr/scripts/pr-wait-win.py",
+      "gitBlob": "1c7b435dceff20f828029c64aab5146d2dc5193b",
+      "sha256": "3fdf5def9bf8d8e3b1d97642316b9bb29ff6c063da610589655f302be8b84583",
+      "bytes": 1851,
+      "gitMode": "100644"
+    },
+    {
+      "path": "babysit-pr/scripts/test_pr_wait.py",
+      "gitBlob": "6e53e172c4d5db246076f7f105173020e33a3ba3",
+      "sha256": "b2060adbf004fc33fcf03551f558905da6f620015eae1774c60419d20dd7d580",
+      "bytes": 27861,
+      "gitMode": "100644"
+    },
+    {
+      "path": "commit/SKILL.md",
+      "gitBlob": "5ad2f8646d141cd0c0c92198b0b47078c0afc187",
+      "sha256": "79343980f6a09eeca82768e7d618b7511572094ae5703a4d6c26183f57c8700b",
+      "bytes": 5891,
+      "gitMode": "100644"
+    },
+    {
+      "path": "commit/references/merge-messages.md",
+      "gitBlob": "762be0c468ff8c074c891042e4d7ec943a9afad7",
+      "sha256": "0183100f158fd5bc0849343d86464e70db56b46b86e055142949a5a26e2a1a6d",
+      "bytes": 6532,
+      "gitMode": "100644"
+    },
+    {
+      "path": "commit/references/sources.md",
+      "gitBlob": "87c94aa5e5e97da0c09ce47aa58e4a9613c66df0",
+      "sha256": "8ca10d9b4fa22e92e72fcc78fd2718ab4ed3ca9d6b8be427dcd034274eb762ea",
+      "bytes": 29054,
+      "gitMode": "100644"
+    },
+    {
+      "path": "contributing/SKILL.md",
+      "gitBlob": "a002a70c2779529a3919d2bdbc3ac82719ca6ff6",
+      "sha256": "64e0a3efbb63f715753e6e92ac6d0fe1aa574a339a4e6ae0f8e8ca86c833e9e6",
+      "bytes": 5672,
+      "gitMode": "100644"
+    },
+    {
+      "path": "contributing/references/sources.md",
+      "gitBlob": "14138af4991d699be7d517653b579667537ba134",
+      "sha256": "ee422a8137a5c8992e5580ad4a7bfaee4037b2e1466a40876c66c1dd4cc37ac7",
+      "bytes": 29690,
+      "gitMode": "100644"
+    },
+    {
+      "path": "contributing/references/template.md",
+      "gitBlob": "9b5db3cc3640c27cee65482e64019315999ed8c9",
+      "sha256": "7daed2a1b65ddccd3ba4589a940c2609c61b18180c18573bbfe2bd207667e5ed",
+      "bytes": 3334,
+      "gitMode": "100644"
+    },
+    {
+      "path": "contributing/scripts/contributing-check.mjs",
+      "gitBlob": "2531438310f065141cbf39627e83f74bc0f61fb8",
+      "sha256": "6f8bbc43424c051e4be0cd07bcd1714f23e5ed002a47ca62bdaf1a6858a92dac",
+      "bytes": 21622,
+      "gitMode": "100644"
+    },
+    {
+      "path": "contributing/scripts/contributing-check.test.mjs",
+      "gitBlob": "1d389031d0a98d9670861b08454c160161689163",
+      "sha256": "f4bddeac34a393bddec79cef3b9256ddb420f71ba8657d6c2e52dac8467dbce1",
+      "bytes": 31152,
+      "gitMode": "100644"
+    },
+    {
+      "path": "contributing/scripts/entry.test.mjs",
+      "gitBlob": "ac8f2f16312508c4e839888610a427250290cfc9",
+      "sha256": "64ec063fd2bd4f2434ef560aae517534efc13f331d0a1c3142a86cab32b68f0f",
+      "bytes": 1215,
+      "gitMode": "100644"
+    },
+    {
+      "path": "contributing/scripts/symlink.test.mjs",
+      "gitBlob": "4f53d8b643693c936dfee0e25f80e71dd07d19cd",
+      "sha256": "a3b45149b5e39b4870cbdb35a87b532b5f20b8e2ee1ad5cc10dbf3e7d4995c83",
+      "bytes": 1365,
+      "gitMode": "100644"
+    },
+    {
+      "path": "discussions/SKILL.md",
+      "gitBlob": "2b55b79c9125006fc832d68617bbe3b3c1aec363",
+      "sha256": "2337189460658d2790217499862e600e5a6b6959d25a95403dc77a0d0c745323",
+      "bytes": 6664,
+      "gitMode": "100644"
+    },
+    {
+      "path": "discussions/references/post-templates.md",
+      "gitBlob": "81a88cff935d32c6d17408b03f85b00505f4a77f",
+      "sha256": "c4823b10633ccff013a33c2446d5a45e0c169c720e857afc20d7e22e0f97a458",
+      "bytes": 9180,
+      "gitMode": "100644"
+    },
+    {
+      "path": "discussions/references/sources.md",
+      "gitBlob": "da10b3d1032f8200cc9a71e0d89faee40afa6489",
+      "sha256": "a5cde5392250d1e7e9302ed7db577942e2791a3da1f82e52c435b097be6c71d7",
+      "bytes": 28900,
+      "gitMode": "100644"
+    },
+    {
+      "path": "discussions/scripts/discussion-check.mjs",
+      "gitBlob": "9300e853e604c7f1f52452daf19a9c1b79e8fb7d",
+      "sha256": "38d4e836f43cbf4f8575349f6f5307690dce6e670f6d6f420020d94d92f337f5",
+      "bytes": 6256,
+      "gitMode": "100644"
+    },
+    {
+      "path": "discussions/scripts/discussion-check.test.mjs",
+      "gitBlob": "602af0e3c1366ee4aaf16bf66e9ad3a4ae3033df",
+      "sha256": "e7474cbf6d5f4432fea8b4eb590390e5fe87537d60c9cc0e5234603ca6a3c1a1",
+      "bytes": 5305,
+      "gitMode": "100644"
+    },
+    {
+      "path": "discussions/scripts/symlink.test.mjs",
+      "gitBlob": "5d4fd071cdb7c78ca63958419a98f32997340658",
+      "sha256": "c2b125f6888c543f16cab1bf77e050926472078955a70899fef966943676ae37",
+      "bytes": 1029,
+      "gitMode": "100644"
+    },
+    {
+      "path": "git-flow/SKILL.md",
+      "gitBlob": "3da4d0a201c3ea8ef86287108d9c648137e8450a",
+      "sha256": "a6f70421c201b0abe1641a8e06cc93d30e6af360d3c3e30b09526db8fb72884e",
+      "bytes": 3799,
+      "gitMode": "100644"
+    },
+    {
+      "path": "git-flow/references/handoff.md",
+      "gitBlob": "dc57e16d3f4d721ebce8a2b35020e9f054a9389e",
+      "sha256": "19aec91c16be30f22b45f19a2a2e4fb53745d49d22df34a4899915b6ae54e111",
+      "bytes": 1667,
+      "gitMode": "100644"
+    },
+    {
+      "path": "github-flow/SKILL.md",
+      "gitBlob": "73bd8a9cb224e1670693e24bb974cf0c4bf70ebb",
+      "sha256": "a856914bff6f751b95ef31564f4af81c784e7e5427a478bcb8f599f73d7e1d95",
+      "bytes": 3160,
+      "gitMode": "100644"
+    },
+    {
+      "path": "github-flow/references/formats.md",
+      "gitBlob": "78b5ccb5c5ea56726cdf73b8c7431d5b54c35dd4",
+      "sha256": "5bb1b08d3e2b8301ebe8fa5c778934ce25a8192b6bc031e0abad2163b12140da",
+      "bytes": 1707,
+      "gitMode": "100644"
+    },
+    {
+      "path": "issues-and-releases/SKILL.md",
+      "gitBlob": "ecb5eee288fc468c3f8e8180837259c4784f1fca",
+      "sha256": "2dc4f5b8a8a39d335b8f6d22c1befb30d05fcffccc6d6a81fb2a869d88f76606",
+      "bytes": 6676,
+      "gitMode": "100644"
+    },
+    {
+      "path": "issues-and-releases/references/issue-comments.md",
+      "gitBlob": "bd0b036fed42071239a5c0e5819832859ea318ae",
+      "sha256": "edc616c843eb6fd7b11c0f12644f1604d591c9cf0a621eb7b1be6b99b0332e66",
+      "bytes": 6479,
+      "gitMode": "100644"
+    },
+    {
+      "path": "issues-and-releases/references/sources.md",
+      "gitBlob": "a957a1ef9552a808a158e5ec7be4d46ddc3eaf54",
+      "sha256": "46bc5234eead604dbd08f72b6060156844a0bce931bb1e04959e3b3d891f5bfd",
+      "bytes": 27495,
+      "gitMode": "100644"
+    },
+    {
+      "path": "pr-template/SKILL.md",
+      "gitBlob": "2981dc567cc24abae81c3988a879dc17c1ec20c5",
+      "sha256": "d93c9157e8afdc936bad798756ea690a55208b55e848b125bfdb8a1dafff1823",
+      "bytes": 4301,
+      "gitMode": "100644"
+    },
+    {
+      "path": "pr-template/references/body.md",
+      "gitBlob": "84a3903d540fa0b738c29ecda90e9a9163f06da1",
+      "sha256": "fb661f253ca50223d0532b199a9e41505516a6e014b8e911e16805c516930b64",
+      "bytes": 4136,
+      "gitMode": "100644"
+    },
+    {
+      "path": "pr-template/references/easy-to-review.md",
+      "gitBlob": "1c472adef7650a63034c16bee05455cdabd3e612",
+      "sha256": "3e2ea584f8882096cec3916278f6cf45cfaab6ce3ba4d2e8b333ce79e18ad5a1",
+      "bytes": 1481,
+      "gitMode": "100644"
+    },
+    {
+      "path": "pr-template/references/evidence.md",
+      "gitBlob": "bd80dd9cb81faf3b3b5eb4155bf8b6554d60d377",
+      "sha256": "df465c5fc3de48b99fa564fb0b347e899627059255b3d69f6feb84b4c00e657f",
+      "bytes": 3420,
+      "gitMode": "100644"
+    },
+    {
+      "path": "pr-template/references/example.md",
+      "gitBlob": "4d6c07f9d16342cacc0597b30448842aceead14d",
+      "sha256": "a7a78c2235a1a391663db2bb4e7d10e05aa5e6df6ce401bb44d8278e434561c8",
+      "bytes": 5028,
+      "gitMode": "100644"
+    },
+    {
+      "path": "pr-template/references/older-prs.md",
+      "gitBlob": "3c460e152e02203c581858d3e2918327a2546884",
+      "sha256": "5389c174de26a2631d2225dbc92994d7f4caf0c21d833aec16327dab89cfa31e",
+      "bytes": 659,
+      "gitMode": "100644"
+    },
+    {
+      "path": "pr-template/scripts/cases.mjs",
+      "gitBlob": "828ec86a8fe4ef3c712921f18a129217d689b75e",
+      "sha256": "55fb27ad0eedaea60cf664ea479096bd76275d2461e1fb3bb9968c384ccb0c0a",
+      "bytes": 14007,
+      "gitMode": "100644"
+    },
+    {
+      "path": "pr-template/scripts/golden.json",
+      "gitBlob": "681140c40f166e844750408cf33dd16ee26190db",
+      "sha256": "95acc5afd93bfb06a10e7756045e6ead8a1e62edc02ef6a217fed619437d349c",
+      "bytes": 111546,
+      "gitMode": "100644"
+    },
+    {
+      "path": "pr-template/scripts/make-golden.mjs",
+      "gitBlob": "fbc4b953fcfe4dac773e7af5844b7da1951ac7f8",
+      "sha256": "fbd021abd83a75fcbfa019f9af2d74317d826231f6e6ef3505ebcdc1077b26bb",
+      "bytes": 896,
+      "gitMode": "100755"
+    },
+    {
+      "path": "pr-template/scripts/pr-body.mjs",
+      "gitBlob": "65cebabc55dcfe920dbe9cfa363507644e264402",
+      "sha256": "f1408d43965cdad10dff5aa38d0b4f6e608d067fe628aac3891b6b6eaeeefc9b",
+      "bytes": 9804,
+      "gitMode": "100755"
+    },
+    {
+      "path": "pr-template/scripts/pr-body.test.mjs",
+      "gitBlob": "4c17259fd1226563373f3012e8fa63e8759e4d3b",
+      "sha256": "dbaa7395f2dd1092a69234a20856e425b77b7f8bcfbe30e9c4a808259cbb39e5",
+      "bytes": 11507,
+      "gitMode": "100644"
+    },
+    {
+      "path": "pr-template/scripts/rules.mjs",
+      "gitBlob": "3761a4f72445fc50e897502eef84b499feb00d16",
+      "sha256": "8174ee1fb474408f02c2dbfd04bdf7253ce41b25e90eafdc6585468d5f8d6576",
+      "bytes": 10125,
+      "gitMode": "100644"
+    },
+    {
+      "path": "readme/SKILL.md",
+      "gitBlob": "6d38eaae1034781bbf9eecc164e78c5fdcdf1cef",
+      "sha256": "453ec31a18a6cafbab360017cbcb2db2931028ca9140d1d79f6617fa30de8d9f",
+      "bytes": 4324,
+      "gitMode": "100644"
+    },
+    {
+      "path": "readme/references/template.md",
+      "gitBlob": "75a990f33da825dbbdaa386b489caaa47904994d",
+      "sha256": "71798e313be1eda8a5672e19cb21b9f17e8a01078edb2cd28e99333e00ee69c9",
+      "bytes": 1661,
+      "gitMode": "100644"
+    },
+    {
+      "path": "readme/scripts/entry.test.mjs",
+      "gitBlob": "529c538494669a37758e4e99a05a37e24dbc84fb",
+      "sha256": "ae62ac63b52251188e281f57d66d0385413f99f2e451894ed24847388ed0c965",
+      "bytes": 1209,
+      "gitMode": "100644"
+    },
+    {
+      "path": "readme/scripts/image-check.mjs",
+      "gitBlob": "1e9503342d2dff93e8409704edd8b54836e9ff88",
+      "sha256": "fa7a624a1dfafacca4ac6e44105f0b509ff4683ea01adf2fab44cddd698783d8",
+      "bytes": 4364,
+      "gitMode": "100644"
+    },
+    {
+      "path": "readme/scripts/image-check.test.mjs",
+      "gitBlob": "83d8027026df68df97ef47273371c727062a9c95",
+      "sha256": "7b5f75690a449a55fc0fe69b9761c91eec94394b5755b1a6a094dc06f03f0cd2",
+      "bytes": 4350,
+      "gitMode": "100644"
+    },
+    {
+      "path": "readme/scripts/readme-check.mjs",
+      "gitBlob": "f203313cdd9341a5549626ea6e3118d7c6aefc1f",
+      "sha256": "cd1e0d407bcce679c3da3b51b4d3b0985152981de662b8e1b2c524a8744602c5",
+      "bytes": 18969,
+      "gitMode": "100644"
+    },
+    {
+      "path": "readme/scripts/readme-check.test.mjs",
+      "gitBlob": "ce11d637503e08c5815272ff91fbf0ba5fc4f48a",
+      "sha256": "2aa0eac814f5f8b1dcf35bee3643948071286ffe4cf00fa25ac4f9ebca19acb8",
+      "bytes": 27830,
+      "gitMode": "100644"
+    },
+    {
+      "path": "repo-docs/SKILL.md",
+      "gitBlob": "e647aad7a98bb49efc1a6af788976b6c4bafefd8",
+      "sha256": "0a7331e2c794ebe7e60ff75722bee5887bfbb92555cbf11447057d88a6140d29",
+      "bytes": 7659,
+      "gitMode": "100644"
+    },
+    {
+      "path": "repo-docs/references/page-templates.md",
+      "gitBlob": "2755d272fb0f02dd1b0ea2730d9b944ccf95095e",
+      "sha256": "005d9d1b6c650ce74472ea8106225885fb757a119f7ea19386aeb5ce2ab7be25",
+      "bytes": 9032,
+      "gitMode": "100644"
+    },
+    {
+      "path": "repo-docs/references/sources.md",
+      "gitBlob": "eb9e379ded4247fca72f951cce93441afb39409b",
+      "sha256": "271e017ffc7034b2c4b40f3b2316828dfc5f9e1b8db9e97702901dc87732bac0",
+      "bytes": 28512,
+      "gitMode": "100644"
+    },
+    {
+      "path": "repo-docs/scripts/docs-check.mjs",
+      "gitBlob": "00a96fb7e0769fbf8f7ea17690c37b638d9cd294",
+      "sha256": "f5504aeba4eb3a54cfb98742c4453d2dd50fec13951239dc71eddae374733d43",
+      "bytes": 16607,
+      "gitMode": "100644"
+    },
+    {
+      "path": "repo-docs/scripts/docs-check.test.mjs",
+      "gitBlob": "54578f480f8b23b2edb7011a535b2b8660c96ef0",
+      "sha256": "52377063fa898a6456669683410a01b595098f95f854a5ee4e9ff9365a45ad81",
+      "bytes": 13124,
+      "gitMode": "100644"
+    },
+    {
+      "path": "repo-docs/scripts/symlink.test.mjs",
+      "gitBlob": "515ec77e8fa283fc74e2b6461e4f9884ddd467da",
+      "sha256": "b016574d907c40b95af23f57631cc1c75507aaa343449480258039d3b2d15965",
+      "bytes": 3148,
+      "gitMode": "100644"
+    },
+    {
+      "path": "repo-standards/SKILL.md",
+      "gitBlob": "4c37509638e427c41c55e7cf551f8e229c2c8346",
+      "sha256": "7201f67c85695438286103f4c2e453240be72e8d14c9cb6638c2a2def6a58775",
+      "bytes": 6739,
+      "gitMode": "100644"
+    },
+    {
+      "path": "repo-standards/references/checklist.md",
+      "gitBlob": "bb8eb5caeddc7c374d1f7bfe89821807a627b43f",
+      "sha256": "517009d02bd429e80175f8e6d68d77171fa410dda683dc3ad892869c66180dbe",
+      "bytes": 6861,
+      "gitMode": "100644"
+    },
+    {
+      "path": "repo-standards/references/sources.md",
+      "gitBlob": "50e3baa35b35020b36007253069205ab9182359c",
+      "sha256": "5bf29381c3663e32b8ae865a807b2ff6f41fec4044facc9393a08af06703a49c",
+      "bytes": 29801,
+      "gitMode": "100644"
+    },
+    {
+      "path": "repo-standards/references/templates/AGENTS.md",
+      "gitBlob": "20a806470cde6e6525243207946688cae73ab81b",
+      "sha256": "32168864fa89323136c7950b11bbd4d11fb5a4344217bf9f80a0f975c631f678",
+      "bytes": 482,
+      "gitMode": "100644"
+    },
+    {
+      "path": "repo-standards/references/templates/CODEOWNERS",
+      "gitBlob": "a5d2cea9163d5bf0943e5da1dc6e11486cd5246f",
+      "sha256": "8d4aed675ab6988b5e67b28f6e06b194fbe6ff413afc01c7d0382d693f78170d",
+      "bytes": 189,
+      "gitMode": "100644"
+    },
+    {
+      "path": "repo-standards/references/templates/PULL_REQUEST_TEMPLATE.md",
+      "gitBlob": "f9a3882a894614fdafe7e06e6b839eb8ff08d543",
+      "sha256": "af0baf458770aa22311e11d22da0a4f3e8fbc436bb4b948688752fb8026b589b",
+      "bytes": 2333,
+      "gitMode": "100644"
+    },
+    {
+      "path": "repo-standards/references/templates/SECURITY.md",
+      "gitBlob": "3811152bdc8e72cbe3c3421df1b52dd367aef06c",
+      "sha256": "35681305317dab630501bdc5f02fcea67c7316e6bdfab2f4746ccb76e8170362",
+      "bytes": 781,
+      "gitMode": "100644"
+    },
+    {
+      "path": "repo-standards/references/templates/bug.yml",
+      "gitBlob": "4b84f600960e538f9d480439c8b67696759a5b49",
+      "sha256": "9c1f4d235bbcb0637121d38a4e85eaa6ee85acd58944183104c66d28bb702b1e",
+      "bytes": 1290,
+      "gitMode": "100644"
+    },
+    {
+      "path": "repo-standards/references/templates/ci.yml",
+      "gitBlob": "7793c939269151d190df3d9aac0b2b55fd86837e",
+      "sha256": "de586ed038b9d4eebe5c61ccb8cb0e9588addd0e7412e3d4936cf7ce84a31254",
+      "bytes": 675,
+      "gitMode": "100644"
+    },
+    {
+      "path": "repo-standards/references/templates/config.yml",
+      "gitBlob": "5a0c284d126845017581919f5adcb1b85b270486",
+      "sha256": "63327679230c2cd70d3766b6ddc91abe88efbdcfb5ac0f9c43cea39720993797",
+      "bytes": 223,
+      "gitMode": "100644"
+    },
+    {
+      "path": "repo-standards/references/templates/feature.yml",
+      "gitBlob": "6d08ec4a3f30833cbf8dbae4543abd3a1ea5fae1",
+      "sha256": "007995a4319c3be3a6e3b71c9854c34d660f14e8ace37f981c432783c536439b",
+      "bytes": 957,
+      "gitMode": "100644"
+    },
+    {
+      "path": "repo-standards/references/templates/skills-check.yml",
+      "gitBlob": "54ace22b4fa3382c89cfe87eba7fd9b780c7ba95",
+      "sha256": "d351e88ca2cbc16bcdcd38472b45b524e25e661546eefecdd0d2cecb3cfd5f3b",
+      "bytes": 4344,
+      "gitMode": "100644"
+    },
+    {
+      "path": "repo-standards/scripts/entry.test.mjs",
+      "gitBlob": "612b02c966a03db2d52140c6377b810f807aae22",
+      "sha256": "5bfaf2ee94e16d8e97f9f569050724d0b6260e55cb6e19fa88ed3ef1c4b5ac1f",
+      "bytes": 1346,
+      "gitMode": "100644"
+    },
+    {
+      "path": "repo-standards/scripts/repo-check.mjs",
+      "gitBlob": "c924b1529b7aabd96cc495a756c418607cec5dbf",
+      "sha256": "0bb30c22caed8be4f5b31bba8dade7b25375b8974f0e0f3a041af6cd3b0cb25f",
+      "bytes": 31485,
+      "gitMode": "100644"
+    },
+    {
+      "path": "repo-standards/scripts/repo-check.test.mjs",
+      "gitBlob": "f0c9a88a542947f96d4dbe5b856cc5fed57ca8ef",
+      "sha256": "14e97786232cf1d49c1ed98e6394ac89e2583d4a2f03cff6db4a0b4a4b5c5be0",
+      "bytes": 13695,
+      "gitMode": "100644"
+    },
+    {
+      "path": "review-comments/SKILL.md",
+      "gitBlob": "5c7e8c078ec576a9e407447e5fee864057ad8571",
+      "sha256": "6754927cb0215dd765f14a6ca1862ae4b0bcda89558c90628ca111ee4bcc3ec8",
+      "bytes": 7343,
+      "gitMode": "100644"
+    },
+    {
+      "path": "review-comments/references/comment-templates.md",
+      "gitBlob": "dde7a46bbe1c638b53cf5e2f84051f573ce6c644",
+      "sha256": "b233ae7ab11c30e8d95bdbec4c966b6e199fd983fd95d4e0871bb268f32f6f0b",
+      "bytes": 7154,
+      "gitMode": "100644"
+    },
+    {
+      "path": "review-comments/references/sources.md",
+      "gitBlob": "812c48d61b0260428dc1aa451bdcaa44e72f8d6c",
+      "sha256": "33f1c4149bda6bec637cb308b2e43698b81e45eb8eb74edd056f3d8e09fa2be4",
+      "bytes": 30897,
+      "gitMode": "100644"
+    },
+    {
+      "path": "review-comments/scripts/entry.test.mjs",
+      "gitBlob": "6dcc2ae1ed9f25d1275b478c7a0543765abb8a41",
+      "sha256": "5dcbed411d6a851a00e3e1b1c549114f1ebaf10f5a0d4300ef93a11eb0c7fb18",
+      "bytes": 1208,
+      "gitMode": "100644"
+    },
+    {
+      "path": "review-comments/scripts/review-lint.mjs",
+      "gitBlob": "204d06d49adf8a31b76a30747f80d9cdcf1b217b",
+      "sha256": "1e0f8168950663598ad3708606cffb2c4d5efdae94019c6e97eaa3bcf8fe4668",
+      "bytes": 4580,
+      "gitMode": "100644"
+    },
+    {
+      "path": "review-comments/scripts/review-lint.test.mjs",
+      "gitBlob": "3b9361c9dd688f3d36f64ba963543064819988d3",
+      "sha256": "2f2087acb64dae07da97c0063a6a50c5fa0925086d1f16f926863de2710f3193",
+      "bytes": 4884,
+      "gitMode": "100644"
+    },
+    {
+      "path": "review-comments/scripts/symlink.test.mjs",
+      "gitBlob": "c0881c19eb737cafe27dd4b54dd18e38a5809cd5",
+      "sha256": "e938f070dfb1d66ea170bf7c411123ece990b154e325da2850ca788de4e778e0",
+      "bytes": 1024,
+      "gitMode": "100644"
+    },
+    {
+      "path": "review-gate/SKILL.md",
+      "gitBlob": "2a12c5c33a4eabcd433bded9f7f2b1c2d48e8eb8",
+      "sha256": "4a4c3b2b25d802543b2bae116e1d08cafb9ae9a727e6ec5a30c33f0040b31250",
+      "bytes": 5650,
+      "gitMode": "100644"
+    },
+    {
+      "path": "review-gate/references/sources.md",
+      "gitBlob": "49e56f466dd3788c49427a4e060bd5711944e742",
+      "sha256": "45ae546cdc89749d8682b8827e399512ec08fe1d550937c087092138a87fd7d0",
+      "bytes": 3747,
+      "gitMode": "100644"
+    },
+    {
+      "path": "review-gate/scripts/risk-floor.mjs",
+      "gitBlob": "9d3095aae59387b2a90407be0e024a0d15de521e",
+      "sha256": "b2a067f51e0324717a1815fa069a1415981eba651f12eb894de2f1664089d371",
+      "bytes": 4974,
+      "gitMode": "100755"
+    },
+    {
+      "path": "review-gate/scripts/risk-floor.test.mjs",
+      "gitBlob": "2270f405adced3e8b8060b4c4602f63add872674",
+      "sha256": "870f3ccef9690c0bf719541fa3603ea376f4762c62b517383160873a3c101600",
+      "bytes": 20451,
+      "gitMode": "100644"
+    },
+    {
+      "path": "review-gate/scripts/risk-rules.mjs",
+      "gitBlob": "80ccc05c056f4c1cb1076fb54fe21142ae02917b",
+      "sha256": "ce9fc81a11f02798bed536e0e793a811c1619fda88d119b7f98241540e66781c",
+      "bytes": 7306,
+      "gitMode": "100644"
+    }
+  ]
+}

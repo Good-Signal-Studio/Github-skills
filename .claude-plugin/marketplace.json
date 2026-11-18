@@ -1,0 +1,5 @@
+{
+  "name": "good-signal-studio",
+  "owner": { "name": "Good Signal Studio" },
+  "plugins": [{ "name": "gss-github", "source": "./" }]
+}
