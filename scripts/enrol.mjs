@@ -47,7 +47,7 @@ function safeRoot(path) {
     cursor = parent
   }
   if (!existsSync(full) || !lstatSync(full).isDirectory()) throw new Error(`Repository directory does not exist: ${full}`)
-  return realpathSync(full)
+  return process.platform === 'win32' ? realpathSync.native(full) : realpathSync(full)
 }
 
 function safeTarget(root, path) {

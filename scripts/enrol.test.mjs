@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { execFileSync, spawnSync } from 'node:child_process'
-import { chmodSync, cpSync, existsSync, lstatSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'
+import { chmodSync, cpSync, existsSync, lstatSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, realpathSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 import { pathToFileURL } from 'node:url'
@@ -64,6 +64,20 @@ function snapshot(root) {
   walk(root)
   return out
 }
+
+test('Windows accepts a short-path alias for the bundle checkout', { skip: process.platform !== 'win32' }, t => {
+  const options = fixture(t)
+  const shortRoot = execFileSync('cmd.exe', ['/d', '/c', 'for %I in (.) do @echo %~sI'], {
+    cwd: options.bundleRoot,
+    encoding: 'utf8',
+  }).trim()
+  const canonicalRoot = realpathSync.native(options.bundleRoot)
+  if (shortRoot.toLowerCase() === canonicalRoot.toLowerCase()) {
+    t.skip('This Windows volume did not provide a short path for the fixture')
+    return
+  }
+  assert.equal(inventory({ ...options, bundleRoot: shortRoot }).root, canonicalRoot)
+})
 
 test('fresh repo receives both complete sibling payloads, licences and an exact manifest', async t => {
   const options = fixture(t)
