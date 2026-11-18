@@ -47,6 +47,7 @@ Record each reviewer and their actual verdict. This example has no verdict.
 
 ## Checklist
 
+- [ ] Before/after screenshots or videos attached for UI changes, or N/A with reason
 - [ ] Replace this example's claims with evidence from the actual head.
 
 Task: none
