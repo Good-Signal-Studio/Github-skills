@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url'
 const root = fileURLToPath(new URL('../', import.meta.url))
 const upstream = JSON.parse(readFileSync(new URL('../upstream-manifest.json', import.meta.url)))
 const example = 'pr-template/references/example.md'
-const replacement = '2c43fde4dd74cc2ccb9ac04ab0b05c590a625dc1'
+const replacement = '3554ce08fd1532b62056f79ffe19567483ef075c'
 
 test('all pinned skill paths, Git modes and blobs survive in each committed tree', () => {
   const skills = upstream.files.filter(file => /^[^/]+\/SKILL\.md$/.test(file.path))

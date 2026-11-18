@@ -15,8 +15,9 @@ worked Orca PR about retaining manual sidebar order when grouping primary
 checkouts and linked worktrees by repository. It runs from the introductory
 note through the PR checklist. The source describes the example as kept as
 written. Third-party attribution for the reproduced PR remains unresolved.
-All three trees retain the existing fictional Good Signal Studio enrolment
-example, blob `2c43fde4dd74cc2ccb9ac04ab0b05c590a625dc1`.
+All three trees use a fictional Good Signal Studio enrolment example. Its
+checklist preserves the upstream screenshot request verbatim, with the box
+unchecked.
 
 ## Agency integration
 
